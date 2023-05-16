@@ -21,8 +21,6 @@ from pathlib import Path
 
 from ruamel.yaml import YAML
 
-import workmanship
-
 KEY_CHAR = chr(27)
 RET_CHAR = "↳"  # chr(0x21B3)
 
@@ -216,7 +214,7 @@ def typing_tutorial(win, layouts):
 
 def load_lessons(yaml_type="safe") -> dict:
     yaml = YAML(typ=yaml_type)  # default, if not specfied, is 'rt' (round-trip)
-    with (pkg_resources.files(workmanship) / "lessons.yml").open("rt") as f:
+    with (pkg_resources.files(__package__) / "lessons.yml").open("rt") as f:
         return yaml.load(f)
 
 
