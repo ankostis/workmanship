@@ -29,7 +29,7 @@ __license__ = "GPLv3"
 __uri__ = "https://github.com/ankostis/workmanship"
 
 
-KEY_CHAR = chr(27)
+ESC_CHAR = chr(27)
 RET_CHAR = "↳"  # chr(0x21B3)
 
 selected_layout = "dvorak"
@@ -103,7 +103,7 @@ def typing_lesson(win, title, text) -> str:
     y = start_y
 
     status_bar(win, "Press any key to start (ESC to exit)", curses.A_ITALIC)
-    if (c := win.getkey()) == KEY_CHAR:
+    if (c := win.getkey()) == ESC_CHAR:
         return
 
     ok = False
@@ -111,7 +111,7 @@ def typing_lesson(win, title, text) -> str:
     start_time = time.time()
     dump_stats(win, start_time, total_len, hits, misses)
 
-    while (c := win.getkey()) != KEY_CHAR:
+    while (c := win.getkey()) != ESC_CHAR:
         row = lines[y - start_y]
         if c == chr(curses.KEY_RESIZE):
             pass
@@ -137,7 +137,7 @@ def typing_lesson(win, title, text) -> str:
 
     status_bar(win, "Press ESC to return to main menu", curses.A_ITALIC, offset=1)
     dump_stats(win, total_len, start_time, hits, misses)
-    while (c := win.getkey()) != KEY_CHAR:
+    while (c := win.getkey()) != ESC_CHAR:
         pass
 
     return ok
@@ -194,7 +194,7 @@ def typing_tutorial(win, layouts):
         win.clrtoeol()
         sel = win.getstr().decode("utf-8").lower()
 
-        if sel == "q" or all(i == KEY_CHAR for i in sel):
+        if sel == "q" or all(i == ESC_CHAR for i in sel):
             break
 
         if sel == "b":
