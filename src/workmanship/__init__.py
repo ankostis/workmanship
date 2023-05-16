@@ -26,6 +26,7 @@ import workmanship
 KEY_CHAR = chr(27)
 RET_CHAR = "↳"  # chr(0x21B3)
 
+selected_layout = "dvorak"
 beep_on_errors = False
 
 
@@ -136,9 +137,10 @@ def typing_lesson(win, title, text) -> str:
     return ok
 
 
-def typing_tutorial(win, lessons):
-    global beep_on_errors
+def typing_tutorial(win, layouts):
+    global beep_on_errors, selected_layout
 
+    min_height = 6  # title, error, menu(x2), status-bar
     promp_y = 0
     err_y = 1
     titles_y = 2
@@ -146,8 +148,8 @@ def typing_tutorial(win, lessons):
     curses.set_escdelay(150)
     curses.initscr()
     maxy, maxx = win.getmaxyx()
-    if maxy < 4:
-        raise SystemExit("Terminal height too small (< 4 rows)")
+    if maxy < min_height:
+        raise SystemExit(f"Terminal height too small (< {min_height} rows)")
 
     while True:
         curses.echo()
@@ -155,14 +157,24 @@ def typing_tutorial(win, lessons):
         maxy, _ = win.getmaxyx()
         last_y = maxy - 4  # -1 win's last row, -1 status bar, -1 for last item
 
+        titles = {l[0]: l for l in layouts}
+        for j, (tkey, title) in enumerate(titles.items()):
+            win.addstr(
+                titles_y + j,
+                0,
+                f"{tkey}: {title} {'(selected)' if title == selected_layout else ''}",
+            )
+            win.clrtoeol()
+        j += 1
         unfit_title = 0
+        lessons = layouts[selected_layout]
         for i, title in enumerate(lessons):
-            y = i + titles_y
+            y = titles_y + j + i
             if y >= last_y:
                 if not unfit_title:
                     unfit_title = i
             else:
-                win.addstr(i + titles_y, 0, f"{i+1}: {title}")
+                win.addstr(y, 0, f"{i+1}: {title}")
         if unfit_title:
             win.addstr(last_y, 0, f"{unfit_title}...{i}: {title}")
 
@@ -188,12 +200,15 @@ def typing_tutorial(win, lessons):
                 curses.A_BOLD,
             )
             win.clrtoeol()
+        elif sel in titles:
+            selected_layout = titles[sel]
         else:
             try:
                 lesson = int(sel)
+
                 title, text = list(lessons.items())[lesson - 1]
             except (ValueError, IndexError):
-                win.addstr(err_y, 0, f"Invalid lesson number!", curses.A_BOLD)
+                win.addstr(err_y, 0, f"Invalid selection!", curses.A_BOLD)
             else:
                 typing_lesson(win, title, text)
                 win.clear()
@@ -207,5 +222,4 @@ def load_lessons(yaml_type="safe") -> dict:
 
 def main(*args):
     data = load_lessons()
-    lessons = data["layouts"]["workman"]
-    curses.wrapper(typing_tutorial, lessons)
+    curses.wrapper(typing_tutorial, data["layouts"])
