@@ -1,453 +1,454 @@
-lessons:
-  "TN: home row, index fingers": |
-    tttt nnnn tttt nnnn tttt nnnn tttt nnnn tttt nnnn tttt nnnn tttt nnnt
-    tttt nnnn tttt nnnn tttt nnnn tttt nnnn nttt tttn ntnt ttnn nntt tntn
-    tn tn tn tn nt nt nt nt ntn ntn ntn ntn ntn ntn tn ntn tn ntn tn nttn
-    ntn n t tn nt tnn ntn tnn n t tn nt tnn ntn tnn tntn ntnt nttn nt tnn
+layouts:
+  workman:
+    "TN: home row, index fingers": |
+      tttt nnnn tttt nnnn tttt nnnn tttt nnnn tttt nnnn tttt nnnn tttt nnnt
+      tttt nnnn tttt nnnn tttt nnnn tttt nnnn nttt tttn ntnt ttnn nntt tntn
+      tn tn tn tn nt nt nt nt ntn ntn ntn ntn ntn ntn tn ntn tn ntn tn nttn
+      ntn n t tn nt tnn ntn tnn n t tn nt tnn ntn tnn tntn ntnt nttn nt tnn
 
-  "HE: home row, second fingers": |
-    hhhh eeee hhhh eeee hhhh eeee hhhh eeee hhhh eeee hhhh eeee hhhh eeee
-    hhhh eeee hhhh eeee hhhh eeee hhhh eeee hhhh eeee hhhh eeee hhhh eeee
-    he he he he he he ehh ehh ehh ehh eheh eheh eheh eheh hhe hhe hhe hhe
-    e h he eh ehhe ehh ehhe eheh he he h he eh ehhe ehh ehhe eheh he hehe
+    "HE: home row, second fingers": |
+      hhhh eeee hhhh eeee hhhh eeee hhhh eeee hhhh eeee hhhh eeee hhhh eeee
+      hhhh eeee hhhh eeee hhhh eeee hhhh eeee hhhh eeee hhhh eeee hhhh eeee
+      he he he he he he ehh ehh ehh ehh eheh eheh eheh eheh hhe hhe hhe hhe
+      e h he eh ehhe ehh ehhe eheh he he h he eh ehhe ehh ehhe eheh he hehe
 
-  "HNET: comprehensive": |
-    hhhh nnnn eeee tttt hhhh nnnn eeee tttt hhhh nnnn eeee tttt hhhh nnnn
-    hhhh nnnn eeee tttt hhhh nnnn eeee tttt hhhh nnnn eeee tttt hhhh nnnn
-    nth nth nth nth etet etet etet etet enh enh enh enh nh nh nh nh nh nh
-    ehhen ehhen ehhen ehhen nt nte nte nteh enhh enhh enhh enhh etet etet
-    hn nh nth nte ehhen ehhenh enh enhh etet hn nh nth nte henh enhh etet
+    "HNET: comprehensive": |
+      hhhh nnnn eeee tttt hhhh nnnn eeee tttt hhhh nnnn eeee tttt hhhh nnnn
+      hhhh nnnn eeee tttt hhhh nnnn eeee tttt hhhh nnnn eeee tttt hhhh nnnn
+      nth nth nth nth etet etet etet etet enh enh enh enh nh nh nh nh nh nh
+      ehhen ehhen ehhen ehhen nt nte nte nteh enhh enhh enhh enhh etet etet
+      hn nh nth nte ehhen ehhenh enh enhh etet hn nh nth nte henh enhh etet
 
-  "SO: home row, third fingers": |
-    ssss oooo ssss oooo ssss oooo ssss oooo ssss oooo ssss oooo ssss oooo
-    ssss oooo ssss oooo ssss oooo ssss oooo ssss oooo ssss oooo ssss oooo
-    ssss oooo os os os os so so so oso oso oso oso oso oso osso osso osso
-    ssss oooo os os os os so so so oso oso oso oso oso oso osso osso osso
-    sos sos sos sos os oso osso so oss sos os oso osso so oss sos oso ssos
+    "SO: home row, third fingers": |
+      ssss oooo ssss oooo ssss oooo ssss oooo ssss oooo ssss oooo ssss oooo
+      ssss oooo ssss oooo ssss oooo ssss oooo ssss oooo ssss oooo ssss oooo
+      ssss oooo os os os os so so so oso oso oso oso oso oso osso osso osso
+      ssss oooo os os os os so so so oso oso oso oso oso oso osso osso osso
+      sos sos sos sos os oso osso so oss sos os oso osso so oss sos oso ssos
 
-  "SO: comprehensive": |
-    hhhh nnnn oooo ssss eeee tttt hhhh nnnn oooo ssss eeee tttt hnosethnoset
-    ho ho ho ho ns ns ns ns oh oh oh oh ot ot ot ot sn sn sn sn es es es es
-    nho nho nho nho nsh nsh nsh nsh nse nse nse nse nto nto nto nto ohh ohh
-    ohh ohh ohe ohe ohe ohe ose ose ose ose oto oto oto oto ote ote ote ote
-    soh soh soh soh ste ste ste ste eho eho eho eho eoe esh esh esh esh eso
-    eso eso eso ess ess ess ess ese ese ese ese eto eto eto eto est est est
-    nsoh nsoh nsoh nsoh nsse nsse nsse nsse ntoe ntoe ntoe ntoe nsoh nsse ntoe
-    ohso ohso ohso ohso osoh osoh osoh osoh oseh oseh oseh oseh ohso osoh oseh
-    osto osto osto osto soes soes soes soes Sees Sees Sees Sees osto soes Sees
-    ehho ehho ehho ehho ehoe ehoe ehoe ehoe enho enho enho enho ehho ehoe enho
-    enst enst enst enst esoh esoh esoh esoh esse esse esse esse enst esoh esse
-    eseh eseh eseh eseh este este este este etoh etoh etoh etoh eseh este etoh
-    enst enst enst enst esoh esoh esoh esoh esse esse esse esse enst esoh esse
-    eseh eseh eseh eseh este este este este etoh etoh etoh etoh eseh este etoh
-    ehohe ehohe ehohe ehohe ehoen ehoen ehoen ehoen essen essen essen essen
-    Etoh enh esoh
-    Oseh enh ehho ose enh etet
-    Eho nse ehhen este enh etoh
-    Enh soh ote es eseh ste enh nho
-    Osoh ntoe ste enh ehoen soh eso oto
-    Ntoe enh ohso enho esse ste enh etoh soes enh ehoe
+    "SO: comprehensive": |
+      hhhh nnnn oooo ssss eeee tttt hhhh nnnn oooo ssss eeee tttt hnosethnoset
+      ho ho ho ho ns ns ns ns oh oh oh oh ot ot ot ot sn sn sn sn es es es es
+      nho nho nho nho nsh nsh nsh nsh nse nse nse nse nto nto nto nto ohh ohh
+      ohh ohh ohe ohe ohe ohe ose ose ose ose oto oto oto oto ote ote ote ote
+      soh soh soh soh ste ste ste ste eho eho eho eho eoe esh esh esh esh eso
+      eso eso eso ess ess ess ess ese ese ese ese eto eto eto eto est est est
+      nsoh nsoh nsoh nsoh nsse nsse nsse nsse ntoe ntoe ntoe ntoe nsoh nsse ntoe
+      ohso ohso ohso ohso osoh osoh osoh osoh oseh oseh oseh oseh ohso osoh oseh
+      osto osto osto osto soes soes soes soes Sees Sees Sees Sees osto soes Sees
+      ehho ehho ehho ehho ehoe ehoe ehoe ehoe enho enho enho enho ehho ehoe enho
+      enst enst enst enst esoh esoh esoh esoh esse esse esse esse enst esoh esse
+      eseh eseh eseh eseh este este este este etoh etoh etoh etoh eseh este etoh
+      enst enst enst enst esoh esoh esoh esoh esse esse esse esse enst esoh esse
+      eseh eseh eseh eseh este este este este etoh etoh etoh etoh eseh este etoh
+      ehohe ehohe ehohe ehohe ehoen ehoen ehoen ehoen essen essen essen essen
+      Etoh enh esoh
+      Oseh enh ehho ose enh etet
+      Eho nse ehhen este enh etoh
+      Enh soh ote es eseh ste enh nho
+      Osoh ntoe ste enh ehoen soh eso oto
+      Ntoe enh ohso enho esse ste enh etoh soes enh ehoe
 
-  "AI: home row, fourth fingers": |
-    aaaa iiii aaaa iiii aaaa iiii aaaa iiii aaaa iiii aaaa iiii aaaa iiii
-    aaaa iiii aaaa iiii aaaa iiii aaaa iiii aaaa iiii aaaa iiii aaaa iiii
-    ai ai ai ai ia ia ia ia iai iai iai iai aii aii aii aii aii aii ii aa
-    ai ai ai ai ia ia ia ia iai iai iai iai aii aii aii aii aii aii ii aa
-    iaii iaii iaii iaii ai a iaii aii ai a iai ai a iaii aii ai a iai aia
+    "AI: home row, fourth fingers": |
+      aaaa iiii aaaa iiii aaaa iiii aaaa iiii aaaa iiii aaaa iiii aaaa iiii
+      aaaa iiii aaaa iiii aaaa iiii aaaa iiii aaaa iiii aaaa iiii aaaa iiii
+      ai ai ai ai ia ia ia ia iai iai iai iai aii aii aii aii aii aii ii aa
+      ai ai ai ai ia ia ia ia iai iai iai iai aii aii aii aii aii aii ii aa
+      iaii iaii iaii iaii ai a iaii aii ai a iai ai a iaii aii ai a iai aia
 
-  "AI: comprehensive": |
-    aaaa hhhh nnnn oooo ssss iiii eeee tttt aaaa hhhh nnnn oooo ssss iiii
-    an an an an ao ao ao ao ae ae ae ae na na na na is is is is ti ti tih
-    ain ain ain ain Iao Iao Iao Iao iae iae iae iae ihhi iha iha iha haih
-    haih haih haih haie haie haie haie Naai Naai Naai Naai Naoi Naoi Naoi
-    Naoi nain nain nain nain iaoh iaoh iaoh iaoh iain iain iain iain Ihao
-    Ihao Ihao Ihao ihae ihae ihae ihae Ieao Ieao Ieao Ieao Ieao ihae ihae
-    Ihao naehi eheaoti insei
-    Hae enh esaie ae eho es osso
-    Enh Easi ito insoh ai nse ai Iaoea Aooa
-    Aoenha aiihiihi enh hieaeh ae Isten Eansh
-    Nseinse Naooa tihi enhih inshi enae Inaooso isso ihhi
-    Ae osso so enh ehanstih Atoe Ehii ntinhi enh oatihsti nsie
-    Aooheeh ihoihi enh ihoitsti itoihe soihe so enh Aenhoi iha
-    Ehii Iteeso oseaehi enh ehotsti ieaeh enae istenhaie Nstieso nai ihho
-    Henao Ohii aeehiei es enhih Ehoohiihh Ihoaeh SINA ieaetehi es into Tean
+    "AI: comprehensive": |
+      aaaa hhhh nnnn oooo ssss iiii eeee tttt aaaa hhhh nnnn oooo ssss iiii
+      an an an an ao ao ao ao ae ae ae ae na na na na is is is is ti ti tih
+      ain ain ain ain Iao Iao Iao Iao iae iae iae iae ihhi iha iha iha haih
+      haih haih haih haie haie haie haie Naai Naai Naai Naai Naoi Naoi Naoi
+      Naoi nain nain nain nain iaoh iaoh iaoh iaoh iain iain iain iain Ihao
+      Ihao Ihao Ihao ihae ihae ihae ihae Ieao Ieao Ieao Ieao Ieao ihae ihae
+      Ihao naehi eheaoti insei
+      Hae enh esaie ae eho es osso
+      Enh Easi ito insoh ai nse ai Iaoea Aooa
+      Aoenha aiihiihi enh hieaeh ae Isten Eansh
+      Nseinse Naooa tihi enhih inshi enae Inaooso isso ihhi
+      Ae osso so enh ehanstih Atoe Ehii ntinhi enh oatihsti nsie
+      Aooheeh ihoihi enh ihoitsti itoihe soihe so enh Aenhoi iha
+      Ehii Iteeso oseaehi enh ehotsti ieaeh enae istenhaie Nstieso nai ihho
+      Henao Ohii aeehiei es enhih Ehoohiihh Ihoaeh SINA ieaetehi es into Tean
 
-  "GY: index fingers stretching home": |
-    gggg yyyy gggg yyyy gggg yyyy gggg yyyy gggg yyyy gggg yyyy gggg yyyy gggg
-    gy gy gy gy gy gy gy gy ygy ygy ygy ygy ygy ygy ygy ygy ygy ygy ygy ygy gy
-    Ygyg ygy gy ygy g Ygyg ygy gy ygy g Ygyg ygy gy ygy g Ygyg ygy gy ygy g gy
-    tttt nnnn gggg yyyy tttt nnnn gggg yyyy tttt nnnn gggg yyyy tttt nnnn gggg
-    yt yt yt yt ng ng ng ng yt yt yt yt ng ng ng ng yt yt yt yt ng ng ng ng yt
-    yg yty yty yty yty ngy ngy ngy ngy yty yty yty yty ngy ngy ngy ngy nty nty
+    "GY: index fingers stretching home": |
+      gggg yyyy gggg yyyy gggg yyyy gggg yyyy gggg yyyy gggg yyyy gggg yyyy gggg
+      gy gy gy gy gy gy gy gy ygy ygy ygy ygy ygy ygy ygy ygy ygy ygy ygy ygy gy
+      Ygyg ygy gy ygy g Ygyg ygy gy ygy g Ygyg ygy gy ygy g Ygyg ygy gy ygy g gy
+      tttt nnnn gggg yyyy tttt nnnn gggg yyyy tttt nnnn gggg yyyy tttt nnnn gggg
+      yt yt yt yt ng ng ng ng yt yt yt yt ng ng ng ng yt yt yt yt ng ng ng ng yt
+      yg yty yty yty yty ngy ngy ngy ngy yty yty yty yty ngy ngy ngy ngy nty nty
 
-  "Home row": |
-    aaaa yyyy hhhh nnnn gggg oooo ssss iiii eeee tttt
-    aaaa yyyy hhhh nnnn gggg oooo ssss iiii eeee tttt
-    Egoa gi so ngaeti goiehay
-    Enh ieaeth gi ihoe es Iaoea Aogea
-    Engi ihiigso gi ehygsti so enh ehoysoi
-    Enae Enag ygin gi goehoih so enh igotihi
-    Sogsoi ieago iaego is tih engi Egyh so engi
-    Yao Ayygiso yhesoaehy enh enstiaoyen nhayiesoh
-    Hiesogao oaegsonssy gi a osegso ngyyho go Aiga
-    Enh ehoogi hoentigaie ngyhi enh ysei so ngi naoyi
-    Segi iagy enae iaoy gi enh ihhy enae Gigi ihoe ti
-    Ehy Atiego goigotaehy enae Etogiga gi go Goysohiga
-    Enh Ygiisoaoe go enh ogoen hygegso ngei so enh Iatygi
-    G goigie enae Ayhogoh gi go YOA aoy enae aoyhigoh gi ose
-    Yhaooa aoy Hyygh itoeaoohy so enh Eangegao ihaigyh saigi
-    Goygaoa aoy Sngs ys ose ohhy ysoaehy egiithi aoy nhayihei
-    Enh aeehoyaoe gogegaehy ao goehoih istoy enae itgehy Syhiia
-    Enh ysys ayyhy ogoh aoy ogohehho aoy aeeagohy ogoh enstiaoy
-    Ytaoh osyyhy es ngi igi ai nh igetaehy ngi ihyao go enh inayh
-    Yhoogi Ntyiso gi ngyyho go a ygieaoe Etogigao naingin ngyhste
-    Ogoa aoy Yaoa nge enh aiesoginhy aeehoyhh so enh nhay go togiso
-    Atoegh Hygen ehoyi es ngoe enae Hyoa nhhyi enh gyhai yth es Iaeao
-    Enh gyha enae ogohehho ietygsti Yayagiei aiigiehy Hgoiehgo gi aigogoh
-    Esyy nhigeaehy go ngi Yaeito enho nge enh Nsoya go enh igyh go ao
-    goieaoeaohsti ENTY
-    Enh enhigi enae Yaoeh yaehy Yhaen gi ai goaoh ai enh aeegetyh enae
-    Iayh iessy so Iayohii
-    A yhiegeteh Ityaohih aiiaiigo goigiei enae iagoenssy gi goyhhy a
-    naoyste es nhaenhogin gygsei
+    "Home row": |
+      aaaa yyyy hhhh nnnn gggg oooo ssss iiii eeee tttt
+      aaaa yyyy hhhh nnnn gggg oooo ssss iiii eeee tttt
+      Egoa gi so ngaeti goiehay
+      Enh ieaeth gi ihoe es Iaoea Aogea
+      Engi ihiigso gi ehygsti so enh ehoysoi
+      Enae Enag ygin gi goehoih so enh igotihi
+      Sogsoi ieago iaego is tih engi Egyh so engi
+      Yao Ayygiso yhesoaehy enh enstiaoyen nhayiesoh
+      Hiesogao oaegsonssy gi a osegso ngyyho go Aiga
+      Enh ehoogi hoentigaie ngyhi enh ysei so ngi naoyi
+      Segi iagy enae iaoy gi enh ihhy enae Gigi ihoe ti
+      Ehy Atiego goigotaehy enae Etogiga gi go Goysohiga
+      Enh Ygiisoaoe go enh ogoen hygegso ngei so enh Iatygi
+      G goigie enae Ayhogoh gi go YOA aoy enae aoyhigoh gi ose
+      Yhaooa aoy Hyygh itoeaoohy so enh Eangegao ihaigyh saigi
+      Goygaoa aoy Sngs ys ose ohhy ysoaehy egiithi aoy nhayihei
+      Enh aeehoyaoe gogegaehy ao goehoih istoy enae itgehy Syhiia
+      Enh ysys ayyhy ogoh aoy ogohehho aoy aeeagohy ogoh enstiaoy
+      Ytaoh osyyhy es ngi igi ai nh igetaehy ngi ihyao go enh inayh
+      Yhoogi Ntyiso gi ngyyho go a ygieaoe Etogigao naingin ngyhste
+      Ogoa aoy Yaoa nge enh aiesoginhy aeehoyhh so enh nhay go togiso
+      Atoegh Hygen ehoyi es ngoe enae Hyoa nhhyi enh gyhai yth es Iaeao
+      Enh gyha enae ogohehho ietygsti Yayagiei aiigiehy Hgoiehgo gi aigogoh
+      Esyy nhigeaehy go ngi Yaeito enho nge enh Nsoya go enh igyh go ao
+      goieaoeaohsti ENTY
+      Enh enhigi enae Yaoeh yaehy Yhaen gi ai goaoh ai enh aeegetyh enae
+      Iayh iessy so Iayohii
+      A yhiegeteh Ityaohih aiiaiigo goigiei enae iagoenssy gi goyhhy a
+      naoyste es nhaenhogin gygsei
 
-  "WF: first fingers up": |
-    ffff wwww ffff wwww ffff wwww ffff wwww ffff wwww ffff wwww ffff www
-    ffff wwww ffff wwww ffff wwww ffff wwww ffff wwww ffff wwww ffff www
-    wf wf wf wf wf wf wf wf wf wf wf wf wf wf wf wf wf wf wf wf wf wf wf
-    fw fw fw fw fw fw fw fw fw fw fw fw fw fw fw fw fw fw fw fw fw fw fw
-    ffff nnnn wwww tttt ffff nnnn wwww tttt ffff nnnn wwww tttt
-    tw tw tw tw ntf ntf ntf ntf wtf wtf wtf wtf wtw wtw wtw wtw
-    tfn tfn tfn tfn Ntfn Ntfn Ntfn Ntfn Wtfn Wtfn Wtfn Wtfn
+    "WF: first fingers up": |
+      ffff wwww ffff wwww ffff wwww ffff wwww ffff wwww ffff wwww ffff www
+      ffff wwww ffff wwww ffff wwww ffff wwww ffff wwww ffff wwww ffff www
+      wf wf wf wf wf wf wf wf wf wf wf wf wf wf wf wf wf wf wf wf wf wf wf
+      fw fw fw fw fw fw fw fw fw fw fw fw fw fw fw fw fw fw fw fw fw fw fw
+      ffff nnnn wwww tttt ffff nnnn wwww tttt ffff nnnn wwww tttt
+      tw tw tw tw ntf ntf ntf ntf wtf wtf wtf wtf wtw wtw wtw wtw
+      tfn tfn tfn tfn Ntfn Ntfn Ntfn Ntfn Wtfn Wtfn Wtfn Wtfn
 
-  "WF: comprehensive": |
-    aaaa yyyy hhhh ffff nnnn gggg oooo ssss wwww iiii eeee tttt
-    aaaa yyyy hhhh ffff nnnn gggg oooo ssss wwww iiii eeee tttt
-    Enh Ntoegofeso gi go Waiayhoa
-    Nh nai soh wgw so ngi goigfoga
-    G ygy ose ihh Waeeso Afagoie Enh Fhieaws
-    G wte enh iwsofh soes enh whf so enh iwgfse
-    Inh ygy ose wsiewsoh enh nhwaegegi ygafosigi
-    Enh TIWI ihoe wsieafh ngfn so Atftie hgfnehhoen
-    Wheh ieswi ai nh whhwi ae enh Whwig aoy ystfnotei
-    Osengof gi ai ietwhoysti ai ao goyhwhoyhoe swgogso
-    G ygy ose yhigfo engi fayfhe enae gfogehi wseaeshi
-    Ohwetoh gi enh iha fsy aoy gi enh fsy Wsihgyso ess
-    Ys ose ygiwteh enae wsfs gi ai gofhogsti ai wgof wsof
-    Enh itffhiegso enae essenwaieh gi wsgisosti gi ietwgy
-    G itffhie enae soh ose fs es Iagfso go a ingw esogfne
-    Fgtihwwh wgffhy ste so aoegwaies aoy wtofhoe iwafnheeg
-    Enh wgaogie gi a waiigsoaeh iaw aoy igofi goigwgy isofi
-    Aofti enstfne nh ohhyhy a ehoiwse es ioaw tw enh nhaywnsohi
-    Fgoa Hiwsiges itwwsihy enae enh igfowsie go Iwago iagy IESW
-    Enh Iwaogin wshe nawwhohy es wagoe ngi nstih goygfs aoy ihwga
-    Fti gi aiigfohy es fhe fhotgoh ioawinsei goigyh enh TIFI ingw
-    Engi whooaoe iagy Naiegofi so ge aoy enae soh iagy Whoo Ieaeh
-    Fai Ihhwafh go enh Whtfhse ieswwhy enh hofgoh ae enh ftgyhwsie
-    Waeeg Hof nai a WnY go enh enhiwgao iafai so Shygwti aoy Aoegfsoh
-    Esogfne enh ehhoafh whaiaoei awwhaih enh wafao itoeaoogof fsyyhii
-    Enh whoftgo faiwhy ai gei awwhoyafh wtinhy waie enh Waeafsogao ingw
-    Ihhgof ao afgof awh haegof wtyygof go a ehaiwsso gi ose ess yhiwsoygof
-    Go engi hwgisyh enh waeghoe nsieafhi ntf aoy igof yhiwgeh enh ftoinsei
-    Hiwgsoafh ae YtWsoe aoy Ntfnhi gi twiheegof es enh FSW aoy enh Whoeafso
-    Ystf watihi ai nh wtei enh wsgoiheegai aoy iaffgof whetogai go enh ehawse
-    Enh goygfoaoe waeghoe gofhiehy a wsehoe ysiafh es itiwhoy ngi goygfhiegso
-    Twiheegof fsiigw ae enh wafhaoe nay Iehwnaogh aoy Fgoa igyhiehwwgof swwsohoei
-    Wae fshi igfneihhgof ae enh wafsya
-    go Inaofnag yhiwgeh enh ftoinsei ae gei awsfhh
-    Enh waiiafh so Whfaiti aoy enh Ahfhao Iha
-    twso wafh hgfne gi a wsgfoaoe ayaweaegso
-    Go ngoyigfne Iesohnhofh itffhiei enh
-    goygfhosti fhogtihi nay es yhwhoy so enh ito aoy gei wnaihi
-    Yawnoh Iehwnhoiso nai fsoh es Fnaoa aoy
-    Hengswga aoy Tfaoya es atygseawh enh ygiegoftginhy igofgof
-    Enh Wswh iessy go wsigegso aesw enh
-    ngfnhie wsgoe go Iaoegafs ai ao afnaie Aofgh Yghfs gofhiehy whaotei
+    "WF: comprehensive": |
+      aaaa yyyy hhhh ffff nnnn gggg oooo ssss wwww iiii eeee tttt
+      aaaa yyyy hhhh ffff nnnn gggg oooo ssss wwww iiii eeee tttt
+      Enh Ntoegofeso gi go Waiayhoa
+      Nh nai soh wgw so ngi goigfoga
+      G ygy ose ihh Waeeso Afagoie Enh Fhieaws
+      G wte enh iwsofh soes enh whf so enh iwgfse
+      Inh ygy ose wsiewsoh enh nhwaegegi ygafosigi
+      Enh TIWI ihoe wsieafh ngfn so Atftie hgfnehhoen
+      Wheh ieswi ai nh whhwi ae enh Whwig aoy ystfnotei
+      Osengof gi ai ietwhoysti ai ao goyhwhoyhoe swgogso
+      G ygy ose yhigfo engi fayfhe enae gfogehi wseaeshi
+      Ohwetoh gi enh iha fsy aoy gi enh fsy Wsihgyso ess
+      Ys ose ygiwteh enae wsfs gi ai gofhogsti ai wgof wsof
+      Enh itffhiegso enae essenwaieh gi wsgisosti gi ietwgy
+      G itffhie enae soh ose fs es Iagfso go a ingw esogfne
+      Fgtihwwh wgffhy ste so aoegwaies aoy wtofhoe iwafnheeg
+      Enh wgaogie gi a waiigsoaeh iaw aoy igofi goigwgy isofi
+      Aofti enstfne nh ohhyhy a ehoiwse es ioaw tw enh nhaywnsohi
+      Fgoa Hiwsiges itwwsihy enae enh igfowsie go Iwago iagy IESW
+      Enh Iwaogin wshe nawwhohy es wagoe ngi nstih goygfs aoy ihwga
+      Fti gi aiigfohy es fhe fhotgoh ioawinsei goigyh enh TIFI ingw
+      Engi whooaoe iagy Naiegofi so ge aoy enae soh iagy Whoo Ieaeh
+      Fai Ihhwafh go enh Whtfhse ieswwhy enh hofgoh ae enh ftgyhwsie
+      Waeeg Hof nai a WnY go enh enhiwgao iafai so Shygwti aoy Aoegfsoh
+      Esogfne enh ehhoafh whaiaoei awwhaih enh wafao itoeaoogof fsyyhii
+      Enh whoftgo faiwhy ai gei awwhoyafh wtinhy waie enh Waeafsogao ingw
+      Ihhgof ao afgof awh haegof wtyygof go a ehaiwsso gi ose ess yhiwsoygof
+      Go engi hwgisyh enh waeghoe nsieafhi ntf aoy igof yhiwgeh enh ftoinsei
+      Hiwgsoafh ae YtWsoe aoy Ntfnhi gi twiheegof es enh FSW aoy enh Whoeafso
+      Ystf watihi ai nh wtei enh wsgoiheegai aoy iaffgof whetogai go enh ehawse
+      Enh goygfoaoe waeghoe gofhiehy a wsehoe ysiafh es itiwhoy ngi goygfhiegso
+      Twiheegof fsiigw ae enh wafhaoe nay Iehwnaogh aoy Fgoa igyhiehwwgof swwsohoei
+      Wae fshi igfneihhgof ae enh wafsya
+      go Inaofnag yhiwgeh enh ftoinsei ae gei awsfhh
+      Enh waiiafh so Whfaiti aoy enh Ahfhao Iha
+      twso wafh hgfne gi a wsgfoaoe ayaweaegso
+      Go ngoyigfne Iesohnhofh itffhiei enh
+      goygfhosti fhogtihi nay es yhwhoy so enh ito aoy gei wnaihi
+      Yawnoh Iehwnhoiso nai fsoh es Fnaoa aoy
+      Hengswga aoy Tfaoya es atygseawh enh ygiegoftginhy igofgof
+      Enh Wswh iessy go wsigegso aesw enh
+      ngfnhie wsgoe go Iaoegafs ai ao afnaie Aofgh Yghfs gofhiehy whaotei
 
-  "RU: second fingers up": |
-    uuuu rrrr uuuu rrrr uuuu rrrr uuuu rrrr uuuu rrrr uuuu rrrr uuuu rrrr
-    uuuu rrrr uuuu rrrr uuuu rrrr uuuu rrrr uuuu rrrr uuuu rrrr uuuu rrrr
-    hhhh uuuu eeee rrrr hhhh uuuu eeee rrrr hhhh uuuu eeee rrrr hhhh uuuu
-    hu hu hu hu eu eu eu eu hu hu hu hu eu eu eu eu hu eu hu eu hu eu hu
-    ur ur ur ur er er er er hr hr hr hr ur ur ur ur er er er er hr hr hr
-    heur heur heur heur heur heur heur heur heur heur heur heur heur heur
+    "RU: second fingers up": |
+      uuuu rrrr uuuu rrrr uuuu rrrr uuuu rrrr uuuu rrrr uuuu rrrr uuuu rrrr
+      uuuu rrrr uuuu rrrr uuuu rrrr uuuu rrrr uuuu rrrr uuuu rrrr uuuu rrrr
+      hhhh uuuu eeee rrrr hhhh uuuu eeee rrrr hhhh uuuu eeee rrrr hhhh uuuu
+      hu hu hu hu eu eu eu eu hu hu hu hu eu eu eu eu hu eu hu eu hu eu hu
+      ur ur ur ur er er er er hr hr hr hr ur ur ur ur er er er er hr hr hr
+      heur heur heur heur heur heur heur heur heur heur heur heur heur heur
 
-  "RU: comprehensive": |
-    aaaa uuuu yyyy hhhh ffff nnnn gggg oooo ssss wwww iiii eeee tttt rrrr
-    aaaa uuuu yyyy hhhh ffff nnnn gggg oooo ssss wwww iiii eeee tttt rrrr
-    G uao auuhwe engi whuao wghr
-    Haun ygiu usiei eho uhoei haunr
-    Enh uhoiti ustoei ti haun yhuayhr
-    Ustiusti gi unhawhie go Usoohueguter
-    Ugougooaeg aoy Unguafsrrrhaun TrIrAr ugeghir
-    Enh ygyauegu iwhhun so Unswgo hytuaehy Unayr
-    Giaau uaoose ehaun ti enh Unaeeaossfa Unss Unssr
-    Iusee Unho ehaunhi go suhaogu iughouh ae Aoegsunr
-    Enh uayhei yhytuhy enae itun aoegui uatihy unasir
-    Ngi iehensiuswh itffhiehy enae Usoogh nay usofhiegsor
-    G usoehoy enae a Ngeaung iuswh uao yhusyh engi iwhhunr
-    Enh sueswti yhiuhoyhy es enh Egeaogu yhhw go enh suhaor
-    TrOrHrIrUrSr auuhwehy a unaouh ae a usoiwgutsti suutwaegsor
-    Enh ieafhusaun usoegothy es waii enh uaueg go iuhogu Etuisor
-    Uawer Wr Er Usnho ohhyi auuhii es a eauegugao go engi ihuegsor
-    Goihuegugyh ituuhhyi go usoeauegof enh goihue go a wgusihusoyr
-    Usfoau aoy iuseun gi ao gousoiwgutsti unsguhrrrenstfne Uaoyauhr
-    Eswoseun aiisugaehi es atenhoeguaeh enh aoughoe Uaoesohih ehautwir
-    Usus iagy usaungof gi a ugounrrruaeun aoy esiirrruaeun aoy esiirrrr
-    Enh uaeuntw auugyhoe ae enh wguogu yhwguehy Yteun ai ao awaenhegu otgiaouhr
-    Ge gi os usgougyhouh enae engi gygsegu ihoehouh nai hgfne usougih Ui go ger
-    Enh hoentigaiegu ytunhii oseguhy enh Wsoegau ustwhrrraoy yhugyhy es unaih ger
-    G yhehue a nhayaunhrrrG nswh ge gi ose enh
-    Iunoawwi aoy Ususa G nay ai a ogfneuawr
-    Enh auustoeaoerrrenh UrWrArrrusouhyhy enae
-    nh nay so suuaigso ngyyho usuagoh go a ususoter
-    Enh uategsti Uaoaygao ieaegiegugaoi uatfne
-    gousoigiehoughi go enh ihusoy iwauhitge yhigfor
-    Enh WnrYr usoytuehy enh Wtuugog Esuuaearrr
-    ao austiegu ituuhiigso go ituugoue uauswnsogu ieauuaes osehir
+    "RU: comprehensive": |
+      aaaa uuuu yyyy hhhh ffff nnnn gggg oooo ssss wwww iiii eeee tttt rrrr
+      aaaa uuuu yyyy hhhh ffff nnnn gggg oooo ssss wwww iiii eeee tttt rrrr
+      G uao auuhwe engi whuao wghr
+      Haun ygiu usiei eho uhoei haunr
+      Enh uhoiti ustoei ti haun yhuayhr
+      Ustiusti gi unhawhie go Usoohueguter
+      Ugougooaeg aoy Unguafsrrrhaun TrIrAr ugeghir
+      Enh ygyauegu iwhhun so Unswgo hytuaehy Unayr
+      Giaau uaoose ehaun ti enh Unaeeaossfa Unss Unssr
+      Iusee Unho ehaunhi go suhaogu iughouh ae Aoegsunr
+      Enh uayhei yhytuhy enae itun aoegui uatihy unasir
+      Ngi iehensiuswh itffhiehy enae Usoogh nay usofhiegsor
+      G usoehoy enae a Ngeaung iuswh uao yhusyh engi iwhhunr
+      Enh sueswti yhiuhoyhy es enh Egeaogu yhhw go enh suhaor
+      TrOrHrIrUrSr auuhwehy a unaouh ae a usoiwgutsti suutwaegsor
+      Enh ieafhusaun usoegothy es waii enh uaueg go iuhogu Etuisor
+      Uawer Wr Er Usnho ohhyi auuhii es a eauegugao go engi ihuegsor
+      Goihuegugyh ituuhhyi go usoeauegof enh goihue go a wgusihusoyr
+      Usfoau aoy iuseun gi ao gousoiwgutsti unsguhrrrenstfne Uaoyauhr
+      Eswoseun aiisugaehi es atenhoeguaeh enh aoughoe Uaoesohih ehautwir
+      Usus iagy usaungof gi a ugounrrruaeun aoy esiirrruaeun aoy esiirrrr
+      Enh uaeuntw auugyhoe ae enh wguogu yhwguehy Yteun ai ao awaenhegu otgiaouhr
+      Ge gi os usgougyhouh enae engi gygsegu ihoehouh nai hgfne usougih Ui go ger
+      Enh hoentigaiegu ytunhii oseguhy enh Wsoegau ustwhrrraoy yhugyhy es unaih ger
+      G yhehue a nhayaunhrrrG nswh ge gi ose enh
+      Iunoawwi aoy Ususa G nay ai a ogfneuawr
+      Enh auustoeaoerrrenh UrWrArrrusouhyhy enae
+      nh nay so suuaigso ngyyho usuagoh go a ususoter
+      Enh uategsti Uaoaygao ieaegiegugaoi uatfne
+      gousoigiehoughi go enh ihusoy iwauhitge yhigfor
+      Enh WnrYr usoytuehy enh Wtuugog Esuuaearrr
+      ao austiegu ituuhiigso go ituugoue uauswnsogu ieauuaes osehir
 
-  "DP: third fingers up": |
-    pppp dddd pppp dddd pppp dddd pppp dddd pppp dddd pppp dddd
-    pppp dddd pppp dddd pppp dddd pppp dddd pppp dddd pppp dddd
-    oooo ssss pppp dddd oooo ssss pppp dddd oooo ssss pppp dddd
-    spd spd spd spd spd psd psd psd psd psd ospd ospd ospd ospo
-    spd spd spd spd spd psd psd psd psd psd ospd ospd ospd ospo
-    Sppd Sppd Sppd Sppd Psod Psod Psod Psod Spsosd Spsosd Spsos
+    "DP: third fingers up": |
+      pppp dddd pppp dddd pppp dddd pppp dddd pppp dddd pppp dddd
+      pppp dddd pppp dddd pppp dddd pppp dddd pppp dddd pppp dddd
+      oooo ssss pppp dddd oooo ssss pppp dddd oooo ssss pppp dddd
+      spd spd spd spd spd psd psd psd psd psd ospd ospd ospd ospo
+      spd spd spd spd spd psd psd psd psd psd ospd ospd ospd ospo
+      Sppd Sppd Sppd Sppd Psod Psod Psod Psod Spsosd Spsosd Spsos
 
-  "DP: comprehensive": |
-    aaaa uuuu yyyy hhhh ffff nnnn gggg oooo ssss wwww pppp iiii eeee tttt dddd rr
-    aaaa uuuu yyyy hhhh ffff nnnn gggg oooo ssss wwww pppp iiii eeee tttt dddd rr
-    Iunpshyhp yhigphi a uaphhp ai ao spunhiepa usoytuespr
-    A phutppgof wpsuhytph gppgfaehi enh spunapy aoy enh wpagpghr
-    Nappgisod Nappghed Apetpsd aoy Unpgieswnhp aph fpaoywaphoeir
-    Phafao appaofhy ao agpypswd ohap enh ospenhpo Wphespga usppgyspr
-    Enh hppaegu Pgunapy Psyfhpi wpsytuegso phetpohy es enh Utppao Enhaephr
-    Uappgh phay enh epaoiwspeaegso phwspe ai Psigh phnhapihy nhp epaoiupgwer
-    Psfhp enaed go enh ugputged enh phigiespi aoy epaoigiespi aph usppsyhyr
-    Enh fpsuhp phwspehy enae enh aoegwhpiwgpaoe nay yhehpgspaehyr
-    Wghpph Phosgp phfphei enae Fhpapy Yhwapyght gi ose go Unaephid ai yhigphyr
-    Nspoi aph unapauehpgiegu es enh pngosuhpsi aoy enh Epguhpaeswid a ygosiatpr
-    Ega Uapphph ieapid oappaehid aoy gi enh ygphuesp go engi esppgy ayaweaegsor
-    Fhpeptyhd go nhp apgiesupaegu fpaoyhtpd phetpohy enh uappsei ae enh phieatpaoer
-    Enh Hoehpwpgih itpwpgihy Wguapy ai ge upgiiupsiihy enh phiepguehy iepaesiwnhphr
-    Pgeehpd a unapauehp auespd phetpohy ao
-    twpsapgsti phespe es enh gppgeaegof unagpwhpisor
-    Enh pnhespgud enh fpaoyhtpd aoy enh
-    iupgwetph goehpwpheaegso itpwpgihy enh untpunfshpr
-    Enh unsphsfpawnhp phiepagohy ngi paenhp
-    iepsof ehpwigunsphao tpfhid aoy ygy ose yaouhr
-    Enh suhaosfpawnhp phwspei enae enh goehpgsp wphiitph gi goawwpswpgaeh aoy
-    hppsohstid aoy spyhpi enh payap swhpaesp es goehpuhwe enh wtpithpr
-    Hy Nappgi ieapi ai ao appsfaoe aoy ephaunhpsti wapaepsswhpd goehpwphegofd go
-    hppspd spyhpi es espetph a fhpgaepgu goieptuespr Enstfn ngi igyh nai
-    itpphoyhphyd nh usoegothi es swwphii aoy goehppsfaeh enh phegphy fpaoywaphoer
-    Enh affphiisp gi apphiehyd appagfohyd epghyd aoyd awwpswpgaeh es enh nsppspi
-    nh wpaueguhyd wpsihutehy aoy gouapuhpaehyr Enh fpaoyyatfnehpd a iehosfpawnhpd
-    otpetphi nhp fpaoywad aoy nh phutwhpaehid enstfn ngi apenpgegi phetpoir
-    Go phepsiwhued enae wapafpawn gouspwspaehy a wphwsiehpsti P wpswspegsor
+    "DP: comprehensive": |
+      aaaa uuuu yyyy hhhh ffff nnnn gggg oooo ssss wwww pppp iiii eeee tttt dddd rr
+      aaaa uuuu yyyy hhhh ffff nnnn gggg oooo ssss wwww pppp iiii eeee tttt dddd rr
+      Iunpshyhp yhigphi a uaphhp ai ao spunhiepa usoytuespr
+      A phutppgof wpsuhytph gppgfaehi enh spunapy aoy enh wpagpghr
+      Nappgisod Nappghed Apetpsd aoy Unpgieswnhp aph fpaoywaphoeir
+      Phafao appaofhy ao agpypswd ohap enh ospenhpo Wphespga usppgyspr
+      Enh hppaegu Pgunapy Psyfhpi wpsytuegso phetpohy es enh Utppao Enhaephr
+      Uappgh phay enh epaoiwspeaegso phwspe ai Psigh phnhapihy nhp epaoiupgwer
+      Psfhp enaed go enh ugputged enh phigiespi aoy epaoigiespi aph usppsyhyr
+      Enh fpsuhp phwspehy enae enh aoegwhpiwgpaoe nay yhehpgspaehyr
+      Wghpph Phosgp phfphei enae Fhpapy Yhwapyght gi ose go Unaephid ai yhigphyr
+      Nspoi aph unapauehpgiegu es enh pngosuhpsi aoy enh Epguhpaeswid a ygosiatpr
+      Ega Uapphph ieapid oappaehid aoy gi enh ygphuesp go engi esppgy ayaweaegsor
+      Fhpeptyhd go nhp apgiesupaegu fpaoyhtpd phetpohy enh uappsei ae enh phieatpaoer
+      Enh Hoehpwpgih itpwpgihy Wguapy ai ge upgiiupsiihy enh phiepguehy iepaesiwnhphr
+      Pgeehpd a unapauehp auespd phetpohy ao
+      twpsapgsti phespe es enh gppgeaegof unagpwhpisor
+      Enh pnhespgud enh fpaoyhtpd aoy enh
+      iupgwetph goehpwpheaegso itpwpgihy enh untpunfshpr
+      Enh unsphsfpawnhp phiepagohy ngi paenhp
+      iepsof ehpwigunsphao tpfhid aoy ygy ose yaouhr
+      Enh suhaosfpawnhp phwspei enae enh goehpgsp wphiitph gi goawwpswpgaeh aoy
+      hppsohstid aoy spyhpi enh payap swhpaesp es goehpuhwe enh wtpithpr
+      Hy Nappgi ieapi ai ao appsfaoe aoy ephaunhpsti wapaepsswhpd goehpwphegofd go
+      hppspd spyhpi es espetph a fhpgaepgu goieptuespr Enstfn ngi igyh nai
+      itpphoyhphyd nh usoegothi es swwphii aoy goehppsfaeh enh phegphy fpaoywaphoer
+      Enh affphiisp gi apphiehyd appagfohyd epghyd aoyd awwpswpgaeh es enh nsppspi
+      nh wpaueguhyd wpsihutehy aoy gouapuhpaehyr Enh fpaoyyatfnehpd a iehosfpawnhpd
+      otpetphi nhp fpaoywad aoy nh phutwhpaehid enstfn ngi apenpgegi phetpoir
+      Go phepsiwhued enae wapafpawn gouspwspaehy a wphwsiehpsti P wpswspegsor
 
-  "Q;: fourth fingers up": |
-    ;;;; qqqq ;;;; qqqq ;;;; qqqq ;;;; qqqq ;;;; qqqq ;;;; qqqq ;;;; qqqq
-    ;;;; qqqq ;;;; qqqq ;;;; qqqq ;;;; qqqq ;;;; qqqq ;;;; qqqq ;;;; qqqq
-    :::: QQQQ :::: QQQQ :::: QQQQ :::: QQQQ :::: QQQQ :::: QQQQ :::: QQQQ
-    aaaa ;;;; iiii qqqq aaaa ;;;; iiii qqqq aaaa ;;;; iiii qqqq aaaa ;;;;
-    a;; a;; a;; a;; a;; a;; ;a ;a ;a ;a ;a ;a Aqi Aqi Aqi Aqi Aqi Aqi AqI
-    a;a a;a a;a a;a a;a a;a ;qi ;qi ;qi ;qi ;qi ;qi iqi iqi iqi iqi iqi iqi
-    Ia; Ia; Ia; Ia; ;aii ;aii ;aii ;aii ;aii Ia;qi Ia;qi Ia;qi Ia;qi Ia;qi
+    "Q;: fourth fingers up": |
+      ;;;; qqqq ;;;; qqqq ;;;; qqqq ;;;; qqqq ;;;; qqqq ;;;; qqqq ;;;; qqqq
+      ;;;; qqqq ;;;; qqqq ;;;; qqqq ;;;; qqqq ;;;; qqqq ;;;; qqqq ;;;; qqqq
+      :::: QQQQ :::: QQQQ :::: QQQQ :::: QQQQ :::: QQQQ :::: QQQQ :::: QQQQ
+      aaaa ;;;; iiii qqqq aaaa ;;;; iiii qqqq aaaa ;;;; iiii qqqq aaaa ;;;;
+      a;; a;; a;; a;; a;; a;; ;a ;a ;a ;a ;a ;a Aqi Aqi Aqi Aqi Aqi Aqi AqI
+      a;a a;a a;a a;a a;a a;a ;qi ;qi ;qi ;qi ;qi ;qi iqi iqi iqi iqi iqi iqi
+      Ia; Ia; Ia; Ia; ;aii ;aii ;aii ;aii ;aii Ia;qi Ia;qi Ia;qi Ia;qi Ia;qi
 
-  "Q;: comprehensive": |
-    aaaa uuuu yyyy hhhh ffff nnnn gggg ;;;; oooo
-    ssss wwww pppp iiii eeee tttt qqqq dddd rrrr
-    QNh;;sdQ H;;ho ;atfnhyd ai inh us;;gyhy goes A;;hor
-    Go a oteinh;;d U;goeso ieg;; nay ao h;huespa; ;aoyi;gyhr
-    Enh a;usns;gu fhohpa; ieafhy a ustw yqheae go Ea;;anaiihhr
-    :tug;;h aoy Paoya;; u;haohy enhgp w;aehi go enh uaoy;h;gfner
-    :h;aoy a;;hfhy enae QFg;;gfaoqi Gi;aoyQ gi a ;gee;h g;;sfgua;r
-    Igohay SqUsoospqi ;aehie igof;h gioqe fsgof es awwa;; Ptiih;;r
-    Us;soga; ;aoy;spyi ohap :soyso souh iagy QagoqedQ ose QgioqerQ
-    Uaps;goh YqApu gi ao hops;;hh ae enae us;;hfh go Wng;ayh;wngar
-    Ygyoqe inh nhapd Ua; tihy ;sei sq ;aehpa;id go enh ;aie ihusoyir
-    Hg;hho SqNaph aoy Wae SqInha ieg;; inst;yoqe eh;; :hi;gh SqOhg;;r
-    QEngi ;gee;h spghoea; h;hwnaoe gi a ut;etpa; ih;;stedQ iagy Nh;hor
-    Enh g;;hfa; w;aoh;say sq ws;;teaoei naioqe ;aoyhy ae Unguafsqi SqNaphr
-    Inhq;; ua;; A;;giso go Nsos;t;td ose a ;sua; ua;;d so nhp uh;;t;ap wnsohr
-    Engiq;; hoenpa;; enh ;goftgieirrrtigof enh ;heehp Q:dQ soh uao iwh;;
-    Qunsus;aehrQ
-    A;;hfpad ao towapa;;h;hy goeh;;hueta;d ua;ut;aehy enh uh;hiega; ;aegetyhi aoy
-    ;sofgetyhi go nhp i;hhwr
-  
-  "BJ: index fingers stretching down": |
-    jjjj bbbb jjjj bbbb jjjj bbbb jjjj bbbb jjjj bbbb jjjj bbbb jjjj bbbb
-    jjjj bbbb jjjj bbbb jjjj bbbb jjjj bbbb jjjj bbbb jjjj bbbb jjjj bbbb
-    jb jb jb jb jb jb jb bj bj bj bj bj bj bj jjjj ffff nnnn bbbb wwww tttt
-    ftb ftb ftb ftb ftb ftb ftb ftb ftb fbw fbw fbw fbw fbw fbw fbw fbw fbw
-    TNJ TNJ TNJ TNJ TNJ TNJ TNJ TNJ TNJ btn btn btn btn btn btn btn btn btn
-    ntjj ntjj ntjj ntjj ntjj ntjj ntjj wtjj wtjj wtjj wtjj wtjj wtjj wtjj
-    wtjjb wtjjb wtjjb wtjjb wtjjb wtjjb wtwwb wtwwb wtwwb wtwwb wtwwb wtwwb
-  
-  "Upper and home rows": |
-    aaaa uuuu yyyy hhhh jjjj ffff nnnn gggg ;;;; oooo
-    ssss wwww pppp iiii eeee tttt bbbb qqqq dddd rrrr
-    aaaa uuuu yyyy hhhh jjjj ffff nnnn gggg ;;;; oooo
-    ssss wwww pppp iiii eeee tttt bbbb qqqq dddd rrrr
-    Go :ajabheehd upabjgin aoy usjjhh goehoigjb enh ;gjhieb;hr
-    QG yhjb bstdQ upghy Jgo;hbd Qes jgoy a ja;uso ai jhaenhpb ai FsyjphbrQ
-    Fpaoob Jab ;hje Ugoyb a jpg;;bd bhe tojspetoaeh;b jpabhyd eajjhea yphiir
-    Go yabi sj bhiehpbhapd ebwsfpawnb ygy ose igfogjb so;b jsoei aoy ebwhjauhir
-    Enh bstenjt; jaoeaib sj Fssjb aoy Ysoa;y ;hje Jpaougoh enh ja;;aub enae ;gjh gi
-    sjeho jtoobr
-    QAjehp enh jgjehhoen jspjhgetphdQ teehphy enh phjhphhd QIeaojspy gid
-    sjjguga;;bd gohjjhueta;rQ
-    Yphbjtii enstfne jsoy;b sj enae nhjeb hbhjt; sj Iao Jpaougiusqi jsfd ;aie
-    Jpgyab ohap enh jhppbr
-    Fhsjjphbqi jaut;eb ;huetph so upbiea;;sfpawnb aoy ygjjpauegso waeehpoi gi
-    tita;;b goitjjgughoe aoy jat;ebr
-    Gj bst uao ygjjhphoegaeh wibunsenhpawb aoy wibunsaoa;bigid sp wibungaepb aoy
-    wibuns;sfbd bst bstpih;j aph a wibuns;sfgier
-    Bhiehpyabd ai enhb ys haun wabyabd Ibyohb aoy U;gjjspy w;abjt;;b pao sjj es
-    enh jginhpb jsp jpsenb f;aiihi sj Nhopbqi Ypaje A;hr
+    "Q;: comprehensive": |
+      aaaa uuuu yyyy hhhh ffff nnnn gggg ;;;; oooo
+      ssss wwww pppp iiii eeee tttt qqqq dddd rrrr
+      QNh;;sdQ H;;ho ;atfnhyd ai inh us;;gyhy goes A;;hor
+      Go a oteinh;;d U;goeso ieg;; nay ao h;huespa; ;aoyi;gyhr
+      Enh a;usns;gu fhohpa; ieafhy a ustw yqheae go Ea;;anaiihhr
+      :tug;;h aoy Paoya;; u;haohy enhgp w;aehi go enh uaoy;h;gfner
+      :h;aoy a;;hfhy enae QFg;;gfaoqi Gi;aoyQ gi a ;gee;h g;;sfgua;r
+      Igohay SqUsoospqi ;aehie igof;h gioqe fsgof es awwa;; Ptiih;;r
+      Us;soga; ;aoy;spyi ohap :soyso souh iagy QagoqedQ ose QgioqerQ
+      Uaps;goh YqApu gi ao hops;;hh ae enae us;;hfh go Wng;ayh;wngar
+      Ygyoqe inh nhapd Ua; tihy ;sei sq ;aehpa;id go enh ;aie ihusoyir
+      Hg;hho SqNaph aoy Wae SqInha ieg;; inst;yoqe eh;; :hi;gh SqOhg;;r
+      QEngi ;gee;h spghoea; h;hwnaoe gi a ut;etpa; ih;;stedQ iagy Nh;hor
+      Enh g;;hfa; w;aoh;say sq ws;;teaoei naioqe ;aoyhy ae Unguafsqi SqNaphr
+      Inhq;; ua;; A;;giso go Nsos;t;td ose a ;sua; ua;;d so nhp uh;;t;ap wnsohr
+      Engiq;; hoenpa;; enh ;goftgieirrrtigof enh ;heehp Q:dQ soh uao iwh;;
+      Qunsus;aehrQ
+      A;;hfpad ao towapa;;h;hy goeh;;hueta;d ua;ut;aehy enh uh;hiega; ;aegetyhi aoy
+      ;sofgetyhi go nhp i;hhwr
     
-  "CL: index fingers down": |
-    cccc llll cccc llll cccc llll cccc llll cccc llll cccc llll
-    cccc llll cccc llll cccc llll cccc llll cccc llll cccc llll
-    cl cl cl cl cl cl cl cl cl cl lc lc lc lc lc lc lc lc lc lc
-    nnnn cccc llll tttt nnnn cccc llll tttt nnnn cccc llll tttt
-    ct ct ct ct ct ct ct ct ct ct lt lt lt lt lt lt lt lt lt lt
-    TC TC TC TC TC TC TC TC TC TC TC TC TC TC TC TC TC TC TC TC
-    ntl ntl ntl ntl ntl ltl ltl ltl ltl ltl ltc ltc ltc ltc ltc
+    "BJ: index fingers stretching down": |
+      jjjj bbbb jjjj bbbb jjjj bbbb jjjj bbbb jjjj bbbb jjjj bbbb jjjj bbbb
+      jjjj bbbb jjjj bbbb jjjj bbbb jjjj bbbb jjjj bbbb jjjj bbbb jjjj bbbb
+      jb jb jb jb jb jb jb bj bj bj bj bj bj bj jjjj ffff nnnn bbbb wwww tttt
+      ftb ftb ftb ftb ftb ftb ftb ftb ftb fbw fbw fbw fbw fbw fbw fbw fbw fbw
+      TNJ TNJ TNJ TNJ TNJ TNJ TNJ TNJ TNJ btn btn btn btn btn btn btn btn btn
+      ntjj ntjj ntjj ntjj ntjj ntjj ntjj wtjj wtjj wtjj wtjj wtjj wtjj wtjj
+      wtjjb wtjjb wtjjb wtjjb wtjjb wtjjb wtwwb wtwwb wtwwb wtwwb wtwwb wtwwb
     
-  "CL: comprehensive": |
-    aaaa uuuu yyyy hhhh jjjj ffff nnnn gggg cccc ;;;; llll
-    oooo ssss wwww pppp iiii eeee tttt bbbb qqqq dddd rrrr
-    aaaa uuuu yyyy hhhh jjjj ffff nnnn gggg cccc ;;;; llll
-    oooo ssss wwww pppp iiii eeee tttt bbbb qqqq dddd rrrr
-    Cpalhp aichy jsp icgl lg;c go a lh;sypalaegu laoohpr
-    QLb cgofysl jsp a LaugoesindQ Latpguh unschy ste lhhc;br
-    Geqi lsph iwspeilao;gch es iab QunhuclaehQ enao QcosucsterQ
-    Hllhe jh;e nslhiguc toeg; Lsl ihoe ngl enae Na;;lapc Naotccan uapyr
-    Enh lachingje u;sacpssl gi a epayhlapc sj LuCgo;hbqi yhugigsolacgofr
-    Cglqi ogucoalh gi QCglsosdQ ao gpcislh lsuchpb sj nhp yabi go Bscsnalar
-    Enhphqi ose ltun nslhlayh wtlwcgo guh uphal aoy Iltuchpqi nse jtyfh iatuh
-    phlagogofr
-    Enh jg;llachpd go laungoh;gch wphugigsod uatfne enh lafla aoy ilsch jpsl enh
-    gllhoih Ler Cpacaesa so jg;lr
-    Iesuc go Alepac icbpsuchehy ajehp LuChsoqi phlapc lsucgof iwschilhod
-    fgllguchpbd aoy ilschiuphhoi go enh lapchew;auhr
-    Jpsl Caelaoyt es Sc;anslad jpsl Iesucns;l es Choetucbd jpsl A;aica es enh
-    Cphl;god Csyac jg;l gi jstoy go laobd laob ualhpair
+    "Upper and home rows": |
+      aaaa uuuu yyyy hhhh jjjj ffff nnnn gggg ;;;; oooo
+      ssss wwww pppp iiii eeee tttt bbbb qqqq dddd rrrr
+      aaaa uuuu yyyy hhhh jjjj ffff nnnn gggg ;;;; oooo
+      ssss wwww pppp iiii eeee tttt bbbb qqqq dddd rrrr
+      Go :ajabheehd upabjgin aoy usjjhh goehoigjb enh ;gjhieb;hr
+      QG yhjb bstdQ upghy Jgo;hbd Qes jgoy a ja;uso ai jhaenhpb ai FsyjphbrQ
+      Fpaoob Jab ;hje Ugoyb a jpg;;bd bhe tojspetoaeh;b jpabhyd eajjhea yphiir
+      Go yabi sj bhiehpbhapd ebwsfpawnb ygy ose igfogjb so;b jsoei aoy ebwhjauhir
+      Enh bstenjt; jaoeaib sj Fssjb aoy Ysoa;y ;hje Jpaougoh enh ja;;aub enae ;gjh gi
+      sjeho jtoobr
+      QAjehp enh jgjehhoen jspjhgetphdQ teehphy enh phjhphhd QIeaojspy gid
+      sjjguga;;bd gohjjhueta;rQ
+      Yphbjtii enstfne jsoy;b sj enae nhjeb hbhjt; sj Iao Jpaougiusqi jsfd ;aie
+      Jpgyab ohap enh jhppbr
+      Fhsjjphbqi jaut;eb ;huetph so upbiea;;sfpawnb aoy ygjjpauegso waeehpoi gi
+      tita;;b goitjjgughoe aoy jat;ebr
+      Gj bst uao ygjjhphoegaeh wibunsenhpawb aoy wibunsaoa;bigid sp wibungaepb aoy
+      wibuns;sfbd bst bstpih;j aph a wibuns;sfgier
+      Bhiehpyabd ai enhb ys haun wabyabd Ibyohb aoy U;gjjspy w;abjt;;b pao sjj es
+      enh jginhpb jsp jpsenb f;aiihi sj Nhopbqi Ypaje A;hr
+      
+    "CL: index fingers down": |
+      cccc llll cccc llll cccc llll cccc llll cccc llll cccc llll
+      cccc llll cccc llll cccc llll cccc llll cccc llll cccc llll
+      cl cl cl cl cl cl cl cl cl cl lc lc lc lc lc lc lc lc lc lc
+      nnnn cccc llll tttt nnnn cccc llll tttt nnnn cccc llll tttt
+      ct ct ct ct ct ct ct ct ct ct lt lt lt lt lt lt lt lt lt lt
+      TC TC TC TC TC TC TC TC TC TC TC TC TC TC TC TC TC TC TC TC
+      ntl ntl ntl ntl ntl ltl ltl ltl ltl ltl ltc ltc ltc ltc ltc
+      
+    "CL: comprehensive": |
+      aaaa uuuu yyyy hhhh jjjj ffff nnnn gggg cccc ;;;; llll
+      oooo ssss wwww pppp iiii eeee tttt bbbb qqqq dddd rrrr
+      aaaa uuuu yyyy hhhh jjjj ffff nnnn gggg cccc ;;;; llll
+      oooo ssss wwww pppp iiii eeee tttt bbbb qqqq dddd rrrr
+      Cpalhp aichy jsp icgl lg;c go a lh;sypalaegu laoohpr
+      QLb cgofysl jsp a LaugoesindQ Latpguh unschy ste lhhc;br
+      Geqi lsph iwspeilao;gch es iab QunhuclaehQ enao QcosucsterQ
+      Hllhe jh;e nslhiguc toeg; Lsl ihoe ngl enae Na;;lapc Naotccan uapyr
+      Enh lachingje u;sacpssl gi a epayhlapc sj LuCgo;hbqi yhugigsolacgofr
+      Cglqi ogucoalh gi QCglsosdQ ao gpcislh lsuchpb sj nhp yabi go Bscsnalar
+      Enhphqi ose ltun nslhlayh wtlwcgo guh uphal aoy Iltuchpqi nse jtyfh iatuh
+      phlagogofr
+      Enh jg;llachpd go laungoh;gch wphugigsod uatfne enh lafla aoy ilsch jpsl enh
+      gllhoih Ler Cpacaesa so jg;lr
+      Iesuc go Alepac icbpsuchehy ajehp LuChsoqi phlapc lsucgof iwschilhod
+      fgllguchpbd aoy ilschiuphhoi go enh lapchew;auhr
+      Jpsl Caelaoyt es Sc;anslad jpsl Iesucns;l es Choetucbd jpsl A;aica es enh
+      Cphl;god Csyac jg;l gi jstoy go laobd laob ualhpair
 
-  "M,: second fingers down": |
-    mmmm ,,,, mmmm ,,,, mmmm ,,,, mmmm ,,,, mmmm ,,,, mmmm ,,,,
-    mmmm ,,,, mmmm ,,,, mmmm ,,,, mmmm ,,,, mmmm ,,,, mmmm ,,,,
-    m, m, m, m, m, m, m, m, m, m, m, ,m ,m ,m ,m ,m ,m ,m ,m ,m
-    hhhh mmmm eeee ,,,, hhhh mmmm eeee ,,,, hhhh mmmm eeee ,,,,
-    h,h h,h h,h h,h h,h mhe mhe mhe mhe mhe Mh, Mh, Mh, Mh, Mh,
-    ,hh ,hh ,hh ,hh ,hh ,hh ,hh ,he ,he ,he ,he ,he ,he ,he ,he
-    ,he Mh,hee Mh,hee Mh,hee Mh,hee Mh,hee Mh,hee Mh,hee Mh,hee
+    "M,: second fingers down": |
+      mmmm ,,,, mmmm ,,,, mmmm ,,,, mmmm ,,,, mmmm ,,,, mmmm ,,,,
+      mmmm ,,,, mmmm ,,,, mmmm ,,,, mmmm ,,,, mmmm ,,,, mmmm ,,,,
+      m, m, m, m, m, m, m, m, m, m, m, ,m ,m ,m ,m ,m ,m ,m ,m ,m
+      hhhh mmmm eeee ,,,, hhhh mmmm eeee ,,,, hhhh mmmm eeee ,,,,
+      h,h h,h h,h h,h h,h mhe mhe mhe mhe mhe Mh, Mh, Mh, Mh, Mh,
+      ,hh ,hh ,hh ,hh ,hh ,hh ,hh ,he ,he ,he ,he ,he ,he ,he ,he
+      ,he Mh,hee Mh,hee Mh,hee Mh,hee Mh,hee Mh,hee Mh,hee Mh,hee
 
-  "M,: comprehensive": |
-    aaaa uuuu yyyy hhhh jjjj ffff nnnn gggg mmmm cccc ;;;; llll
-    oooo ssss wwww pppp iiii eeee tttt ,,,, bbbb qqqq dddd rrrr
-    aaaa uuuu yyyy hhhh jjjj ffff nnnn gggg mmmm cccc ;;;; llll
-    oooo ssss wwww pppp iiii eeee tttt ,,,, bbbb qqqq dddd rrrr
-    Malhies,od Oh, Bspcd enaeqi lb nslh es,or
-    Enh Msinta Ephh Oaegsoa; Lsotlhoe gi cos,o ,sp;y,gyhr
-    Mtmgeit lachi bst tih bstp swwsohoeqi ,hgfne afagoie nglih;jr
-    Q<s,dQ nh iagy ai ngi ma, ypswwhyr QEnaeqi a mh,h; sj a ,pgie,aeunrQ
-    <aoegof enh ,aehp es j;s,d Gp,go e,giehy enh jatuhe ustoehpu;suc,gihr
-    <ssyps, <g;isoqi wswt;apgeb ,hoe ys,o,apy ajehp enh husoslgu i;s,ys,or
-    Enh s;y Mh,gin ,gys, ,genyph, jtpenhpd ,spcgof ,gen enh ,ssyho mgfia,r
-    Mtyb ,soyhphy gj ge ,ai ,spen,ng;h es ,a;c ys,oes,o es enh Mh,h;pb iesphr
-    G ,soyhp gj enae Oh,i,hhc so enh ,goys,ig;; nai enh ;s,ys,o so <ss;,spenir
-    <gen a,hd Mhphlb a,c,apy;b i,a;;s,hy a ,ns;h i;h, sj pagigoheehi ai enh
-    Msno <aehpi jg;l ieapehyr
-    <bosooa Mtyyd ajehp a ,ngp;,goy estp sj enh Lgy,hied ,agehy ae enh
-    <a;yspj Aiespga jsp e,s ,hhcir
-    QBstp LamhiebdQ ,pseh Lapmspghd QOsengof mtiegjghi wphmtyguhr G uao phmsguh
-    so;b ,nho enhph gi mtieguhrQ
-    Enh oh,i;heehp ,ngeh,ainhy phwspei sj ,gpheawwgof go Usofphii,slao
-    Ns;;gofi,spenqi mtpgiyguegsor
-    QNa;;h;tmandQ ,ag;hy enh maogesp ai nh mheegisohy enh ebwh,pgehp ste enh
-    ,goys,r Enh wpsmhueg;h lamhiegua;;b ;aoyhy ae enh mtouegso sj Mhjjhpiso aoy
-    <goi;s, iephheid mtie ms;egofd ose gomtpgofd a msffgof estpgier
-    
-  "X.: third fingers down": |
-    xxxx .... xxxx .... xxxx .... xxxx .... xxxx .... xxxx ....
-    xxxx .... xxxx .... xxxx .... xxxx .... xxxx .... xxxx ....
-    x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x.
-    .x .x .x .x .x .x .x .x .x .x .x .x .x .x .x .x .x .x .x .x
-    x.x x.x x.x x.x x.x x.x x.x x.x .x. .x. .x. .x. .x. .x. .x.
+    "M,: comprehensive": |
+      aaaa uuuu yyyy hhhh jjjj ffff nnnn gggg mmmm cccc ;;;; llll
+      oooo ssss wwww pppp iiii eeee tttt ,,,, bbbb qqqq dddd rrrr
+      aaaa uuuu yyyy hhhh jjjj ffff nnnn gggg mmmm cccc ;;;; llll
+      oooo ssss wwww pppp iiii eeee tttt ,,,, bbbb qqqq dddd rrrr
+      Malhies,od Oh, Bspcd enaeqi lb nslh es,or
+      Enh Msinta Ephh Oaegsoa; Lsotlhoe gi cos,o ,sp;y,gyhr
+      Mtmgeit lachi bst tih bstp swwsohoeqi ,hgfne afagoie nglih;jr
+      Q<s,dQ nh iagy ai ngi ma, ypswwhyr QEnaeqi a mh,h; sj a ,pgie,aeunrQ
+      <aoegof enh ,aehp es j;s,d Gp,go e,giehy enh jatuhe ustoehpu;suc,gihr
+      <ssyps, <g;isoqi wswt;apgeb ,hoe ys,o,apy ajehp enh husoslgu i;s,ys,or
+      Enh s;y Mh,gin ,gys, ,genyph, jtpenhpd ,spcgof ,gen enh ,ssyho mgfia,r
+      Mtyb ,soyhphy gj ge ,ai ,spen,ng;h es ,a;c ys,oes,o es enh Mh,h;pb iesphr
+      G ,soyhp gj enae Oh,i,hhc so enh ,goys,ig;; nai enh ;s,ys,o so <ss;,spenir
+      <gen a,hd Mhphlb a,c,apy;b i,a;;s,hy a ,ns;h i;h, sj pagigoheehi ai enh
+      Msno <aehpi jg;l ieapehyr
+      <bosooa Mtyyd ajehp a ,ngp;,goy estp sj enh Lgy,hied ,agehy ae enh
+      <a;yspj Aiespga jsp e,s ,hhcir
+      QBstp LamhiebdQ ,pseh Lapmspghd QOsengof mtiegjghi wphmtyguhr G uao phmsguh
+      so;b ,nho enhph gi mtieguhrQ
+      Enh oh,i;heehp ,ngeh,ainhy phwspei sj ,gpheawwgof go Usofphii,slao
+      Ns;;gofi,spenqi mtpgiyguegsor
+      QNa;;h;tmandQ ,ag;hy enh maogesp ai nh mheegisohy enh ebwh,pgehp ste enh
+      ,goys,r Enh wpsmhueg;h lamhiegua;;b ;aoyhy ae enh mtouegso sj Mhjjhpiso aoy
+      <goi;s, iephheid mtie ms;egofd ose gomtpgofd a msffgof estpgier
+      
+    "X.: third fingers down": |
+      xxxx .... xxxx .... xxxx .... xxxx .... xxxx .... xxxx ....
+      xxxx .... xxxx .... xxxx .... xxxx .... xxxx .... xxxx ....
+      x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x.
+      .x .x .x .x .x .x .x .x .x .x .x .x .x .x .x .x .x .x .x .x
+      x.x x.x x.x x.x x.x x.x x.x x.x .x. .x. .x. .x. .x. .x. .x.
 
-  "X.: comprehensive": |
-    aaaa uuuu yyyy hhhh jjjj ffff nnnn gggg mmmm cccc ;;;; llll oooo
-    ssss wwww xxxx pppp iiii eeee tttt .... ,,,, bbbb qqqq dddd rrrr
-    aaaa uuuu yyyy hhhh jjjj ffff nnnn gggg mmmm cccc ;;;; llll oooo
-    ssss wwww xxxx pppp iiii eeee tttt .... ,,,, bbbb qqqq dddd rrrr
-    Lhputpb aoy xtgucig;.hp aph xtgeh enh ialhr
-    Ao auxtgigeg.h lgoy nh;why Wa.;s. h.s;.h ngi enhspghir
-    X>Uqi go.s;.hlhoe ,gen Wapalstoe lab fg.h ge oh, .hp.hr
-    >g.gaoqi oh, >s;.s tohxtg.sua;;b .aoxtginhy nhp jhapi sj ypg.gofr
-    Auuspygof es Wpa.yad >;ayg.siesc ,ai a xtghe .g;;afh go gei Is.ghe yabir
-    Engi togxthd swaxth ;gxtsp yshi ose xthoun bstp engpied ge lachi bst xthaibr
-    Ya.gyqi .g.gy glafgoaegso aoy ngi goxtgigeg.h aoy go.hoeg.h lgoy itffhie a ngfn GXr
-    Gj Gpax ,ai hxtgwwhy es go.ayh aoy usoxthp Eh; A.g.d enh TrIr lab na.h xtainhy
-    enae whp.aig.h;br
-    <hq.h oh.hp xtaoegeaeg.h;b wps.ho enae a xta.hp gi hxtg.a;hoe es a xtg.hpd so;b
-    xta;geaeg.h;br
-    Engi ph.s;tegsoapb uapygs.aiut;ap ehunogxth gi phwphihoeaeg.h sj enh
-    wpsytueg.geb nhph go Unap;seehi.g;;hr
-    QGq.h oh.hp nay itun xta;geb nspi yqsht.phidQ Ma.ghp iagy aiihpeg.h;b s.hp enh
-    epaoxtg; istoyi sj >g.a;ygd ai nh ;sschy s.hp enh wguetphixth nhayxtapehpi sj
-    enh >aoust.hp Ug.gu Uhoehpr
-    Ogp.aoaqi gohxtg.a;hoe ihxth; es enhgp wps.suaeg.h ph;haihd Oh.hplgoyd gi
-    gousou;tig.hr  Oh.hpenh;hiid engi xtgpcb bhe .g.augsti epgs nai h.schy a
-    wpsfphiig.h istoy enae .hpb ,h;; lab fg.h bst a oh, whpiwhueg.h so gpph.hphouhr
+    "X.: comprehensive": |
+      aaaa uuuu yyyy hhhh jjjj ffff nnnn gggg mmmm cccc ;;;; llll oooo
+      ssss wwww xxxx pppp iiii eeee tttt .... ,,,, bbbb qqqq dddd rrrr
+      aaaa uuuu yyyy hhhh jjjj ffff nnnn gggg mmmm cccc ;;;; llll oooo
+      ssss wwww xxxx pppp iiii eeee tttt .... ,,,, bbbb qqqq dddd rrrr
+      Lhputpb aoy xtgucig;.hp aph xtgeh enh ialhr
+      Ao auxtgigeg.h lgoy nh;why Wa.;s. h.s;.h ngi enhspghir
+      X>Uqi go.s;.hlhoe ,gen Wapalstoe lab fg.h ge oh, .hp.hr
+      >g.gaoqi oh, >s;.s tohxtg.sua;;b .aoxtginhy nhp jhapi sj ypg.gofr
+      Auuspygof es Wpa.yad >;ayg.siesc ,ai a xtghe .g;;afh go gei Is.ghe yabir
+      Engi togxthd swaxth ;gxtsp yshi ose xthoun bstp engpied ge lachi bst xthaibr
+      Ya.gyqi .g.gy glafgoaegso aoy ngi goxtgigeg.h aoy go.hoeg.h lgoy itffhie a ngfn GXr
+      Gj Gpax ,ai hxtgwwhy es go.ayh aoy usoxthp Eh; A.g.d enh TrIr lab na.h xtainhy
+      enae whp.aig.h;br
+      <hq.h oh.hp xtaoegeaeg.h;b wps.ho enae a xta.hp gi hxtg.a;hoe es a xtg.hpd so;b
+      xta;geaeg.h;br
+      Engi ph.s;tegsoapb uapygs.aiut;ap ehunogxth gi phwphihoeaeg.h sj enh
+      wpsytueg.geb nhph go Unap;seehi.g;;hr
+      QGq.h oh.hp nay itun xta;geb nspi yqsht.phidQ Ma.ghp iagy aiihpeg.h;b s.hp enh
+      epaoxtg; istoyi sj >g.a;ygd ai nh ;sschy s.hp enh wguetphixth nhayxtapehpi sj
+      enh >aoust.hp Ug.gu Uhoehpr
+      Ogp.aoaqi gohxtg.a;hoe ihxth; es enhgp wps.suaeg.h ph;haihd Oh.hplgoyd gi
+      gousou;tig.hr  Oh.hpenh;hiid engi xtgpcb bhe .g.augsti epgs nai h.schy a
+      wpsfphiig.h istoy enae .hpb ,h;; lab fg.h bst a oh, whpiwhueg.h so gpph.hphouhr
 
-  "Z/: fourth fingers down": |
-    zzzz //// zzzz //// zzzz //// zzzz //// zzzz //// zzzz ////
-    zzzz //// zzzz //// zzzz //// zzzz //// zzzz //// zzzz ////
-    z/ z/ z/ z/ z/ z/ z/ z/ z/ z/ z/ Z/ Z/ Z/ Z/ Z/ Z/ Z/ Z/ Z/
-    z/ z/ z/ z/ z/ z/ z/ z/ z/ z/ z/ Z/ Z/ Z/ Z/ Z/ Z/ Z/ Z/ Z/
-    ?z ?z ?z ?z ?z ?z ?z ?z ?z ?z ?z ?Z ?Z ?Z ?Z ?Z ?Z ?Z ?Z ?Z
+    "Z/: fourth fingers down": |
+      zzzz //// zzzz //// zzzz //// zzzz //// zzzz //// zzzz ////
+      zzzz //// zzzz //// zzzz //// zzzz //// zzzz //// zzzz ////
+      z/ z/ z/ z/ z/ z/ z/ z/ z/ z/ z/ Z/ Z/ Z/ Z/ Z/ Z/ Z/ Z/ Z/
+      z/ z/ z/ z/ z/ z/ z/ z/ z/ z/ z/ Z/ Z/ Z/ Z/ Z/ Z/ Z/ Z/ Z/
+      ?z ?z ?z ?z ?z ?z ?z ?z ?z ?z ?z ?Z ?Z ?Z ?Z ?Z ?Z ?Z ?Z ?Z
 
-  "Z/: comprehensive": |
-    aaaa uuuu yyyy hhhh jjjj ffff nnnn gggg mmmm cccc ;;;; llll oooo ssss
-    wwww xxxx pppp iiii eeee tttt .... ,,,, bbbb //// qqqq dddd rrrr zzzz
-    aaaa uuuu yyyy hhhh jjjj ffff nnnn gggg mmmm cccc ;;;; llll oooo ssss
-    wwww xxxx pppp iiii eeee tttt .... ,,,, bbbb //// qqqq dddd rrrr zzzz
+    "Z/: comprehensive": |
+      aaaa uuuu yyyy hhhh jjjj ffff nnnn gggg mmmm cccc ;;;; llll oooo ssss
+      wwww xxxx pppp iiii eeee tttt .... ,,,, bbbb //// qqqq dddd rrrr zzzz
+      aaaa uuuu yyyy hhhh jjjj ffff nnnn gggg mmmm cccc ;;;; llll oooo ssss
+      wwww xxxx pppp iiii eeee tttt .... ,,,, bbbb //// qqqq dddd rrrr zzzz
 
-  "VK: index fingers stretching down": |
-    ?aunapb LauCho/gh jps/h go ala/hlhoez so enh paygs go ngi La/ya nh nhapy
-    wg//guaes ieao/ai sj Ls/aper
-    Uaplho Psypgfth/ gi a ugeg/ho sj >hoh/th;az nhp jsplhp iwstihd Gogfs Lapegoh/d
-    aoy ngi oh, ,gjhd Aooa >aixth/d na.h ls.hy es I,a/g;aoy sp Eao/aogar
-    A upa/hy fa/h;;h ,ai ,ng//gof apstoy enh /ssz a xtg//gua; fgpajjh ft//;hy ys,o
-    wg//ai enpstfn ngi lt//;hz aosenhp soh lhph;b fpa/hy aoy ys/hyz ih.hpa;
-    unglwao/hhi ieapehy /gffgof aoy /affgofz enh phweg;h /soh ,ai ss/gof ,gen
-    aueg.gebz ih.hpa; ;g/apyi na/apyhy enh jphh/gof ,aehpi aoy uawig/hy enh jgin
-    eaociz a ys/ho fpg//;ghi ,hph ,a;e/gof go enh w;a/ar
+    "VK: index fingers stretching down": |
+      ?aunapb LauCho/gh jps/h go ala/hlhoez so enh paygs go ngi La/ya nh nhapy
+      wg//guaes ieao/ai sj Ls/aper
+      Uaplho Psypgfth/ gi a ugeg/ho sj >hoh/th;az nhp jsplhp iwstihd Gogfs Lapegoh/d
+      aoy ngi oh, ,gjhd Aooa >aixth/d na.h ls.hy es I,a/g;aoy sp Eao/aogar
+      A upa/hy fa/h;;h ,ai ,ng//gof apstoy enh /ssz a xtg//gua; fgpajjh ft//;hy ys,o
+      wg//ai enpstfn ngi lt//;hz aosenhp soh lhph;b fpa/hy aoy ys/hyz ih.hpa;
+      unglwao/hhi ieapehy /gffgof aoy /affgofz enh phweg;h /soh ,ai ss/gof ,gen
+      aueg.gebz ih.hpa; ;g/apyi na/apyhy enh jphh/gof ,aehpi aoy uawig/hy enh jgin
+      eaociz a ys/ho fpg//;ghi ,hph ,a;e/gof go enh w;a/ar
 
-  "All rows": |
-    kkkk vvvv kkkk vvvv kkkk vvvv kkkk vvvv kkkk vvvv kkkk vvvv
-    kkkk vvvv kkkk vvvv kkkk vvvv kkkk vvvv kkkk vvvv kkkk vvvv
-    kv kv kv kv kv kv kv kv kv kv kv kv kv kv kv kv kv kv kv kv
-    vk vk vk vk vk vk vk vk vk vk vk vk vk vk vk vk vk vk vk vk
-    kkv vkk kkv vkk kkv vkk kkv vkk kkv vkk kkv vkk kkv vkk kkv
-    vkv vkv vkv vkv vkv vkv vkv vkv kvk kvk kvk kvk kvk kvk kvk
-    Nhaenu;gjj Ntveak;h ,ai w;abhy kb enh gohvspak;h Kg;; Usikbr
-    Ao gohvnatiegk;h itww;b sj kho/hypgoh lhph;b hvauhpkaehy ngi ygietpkaouhir
-    Kptuh Ksv;hgeohp hvw;agohy es enh hvepaehpphiepga; ,nb Kakb;so Jg.h ,ai ktg;er
-    Enh alkgyhvepsti hvngkgesp ,ai hvnatiehy kb enh eglh nh ;sayhy enh ksvuap
-    ,gen nskkbnspihir
-    Ypsw ensih vhpsvhi sjj go enh lag;ksvz Gq;; fhe enhl go enh kgk;gsfpawnb go
-    jg.h yabi lavgltlr
-    Lpr Ka;ksa gi wpheeb j;hvgk;h ,gen enh ehveksscz geqi wpskak;b hvutiak;h es
-    ja;; a kge khngoyr
-    <nb Lpr Kavehp ,hoe jpsl Kspyhatv es enh eak;hatv hvngkge go :tvhlkstpf kb
-    eavguak gi gohvw;guak;hr
-    Khucb jstoy enh Kpsov wpheeb skosvgstiz enstfn enhph ,ai enae Uapgkkhao
-    phieatpaoe enae ept;b hvuh;;hyr
-    Enh hvhuteg.hi ae OKUd UKId aoy AKU a;; jstoy ge gohvutiak;h enae enh KKU ,ai
-    is goj;hvgk;h aoy vhoswnskgur
-    Ao hvtkhpaoe Kg;; U;goeso k;h, goes ngi iavswnsoh khjsph enh alkaiiayspiz ge
-    ,ai ao hvepaspygoapb hvwhpghouh enae osksyb ust;y hvw;agor
+    "All rows": |
+      kkkk vvvv kkkk vvvv kkkk vvvv kkkk vvvv kkkk vvvv kkkk vvvv
+      kkkk vvvv kkkk vvvv kkkk vvvv kkkk vvvv kkkk vvvv kkkk vvvv
+      kv kv kv kv kv kv kv kv kv kv kv kv kv kv kv kv kv kv kv kv
+      vk vk vk vk vk vk vk vk vk vk vk vk vk vk vk vk vk vk vk vk
+      kkv vkk kkv vkk kkv vkk kkv vkk kkv vkk kkv vkk kkv vkk kkv
+      vkv vkv vkv vkv vkv vkv vkv vkv kvk kvk kvk kvk kvk kvk kvk
+      Nhaenu;gjj Ntveak;h ,ai w;abhy kb enh gohvspak;h Kg;; Usikbr
+      Ao gohvnatiegk;h itww;b sj kho/hypgoh lhph;b hvauhpkaehy ngi ygietpkaouhir
+      Kptuh Ksv;hgeohp hvw;agohy es enh hvepaehpphiepga; ,nb Kakb;so Jg.h ,ai ktg;er
+      Enh alkgyhvepsti hvngkgesp ,ai hvnatiehy kb enh eglh nh ;sayhy enh ksvuap
+      ,gen nskkbnspihir
+      Ypsw ensih vhpsvhi sjj go enh lag;ksvz Gq;; fhe enhl go enh kgk;gsfpawnb go
+      jg.h yabi lavgltlr
+      Lpr Ka;ksa gi wpheeb j;hvgk;h ,gen enh ehveksscz geqi wpskak;b hvutiak;h es
+      ja;; a kge khngoyr
+      <nb Lpr Kavehp ,hoe jpsl Kspyhatv es enh eak;hatv hvngkge go :tvhlkstpf kb
+      eavguak gi gohvw;guak;hr
+      Khucb jstoy enh Kpsov wpheeb skosvgstiz enstfn enhph ,ai enae Uapgkkhao
+      phieatpaoe enae ept;b hvuh;;hyr
+      Enh hvhuteg.hi ae OKUd UKId aoy AKU a;; jstoy ge gohvutiak;h enae enh KKU ,ai
+      is goj;hvgk;h aoy vhoswnskgur
+      Ao hvtkhpaoe Kg;; U;goeso k;h, goes ngi iavswnsoh khjsph enh alkaiiayspiz ge
+      ,ai ao hvepaspygoapb hvwhpghouh enae osksyb ust;y hvw;agor

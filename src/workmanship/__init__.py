@@ -203,4 +203,4 @@ def main(*args):
     yaml = YAML(typ="safe")  # default, if not specfied, is 'rt' (round-trip)
     with (pkg_resources.files(workmanship) / "data.yml").open("rt") as f:
         data = yaml.load(f)
-    curses.wrapper(typing_tutorial, data["lessons"])
+    curses.wrapper(typing_tutorial, data["layouts"]["workman"])
