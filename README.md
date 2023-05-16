@@ -20,6 +20,7 @@ Install (prefferably in a *venv*) and launch it like this:
 pip install workmanship
 workmanship
 ```
+![main menu](./docs/workmanship-menu.png)
 
 ### Data for layout lessons
 
