@@ -18,7 +18,7 @@ Install (prefferably in a *venv*) and launch it like this:
 
 ```bash
 pip install workmanship
-python -m workmanship
+workmanship
 ```
 
 ### Data for layout lessons

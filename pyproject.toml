@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "workmanship"
+dynamic = ["version"]
+requires-python = ">=3.8"
+dependencies = [
+    "ruamel.yaml",
+]
+
+[project.scripts]
+workmanship = "workmanship:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools_scm]
+write_to = "src/workmanship/_version.py"
