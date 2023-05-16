@@ -9,7 +9,7 @@ Launch it with:
 
     python -m workmanship
 
-Lesson texts configured with included ``src/workmanship/data.yml``,
+Lesson texts configured with included ``src/workmanship/lessons.yml``,
 currently for `*workman* layout <https://workmanlayout.org/>`_
 converted hastily from dvorak (so gibberish grams & words).
 
@@ -199,8 +199,8 @@ def typing_tutorial(win, lessons):
                 win.clear()
 
 
-def load_lessons() -> dict:
-    yaml = YAML(typ="safe")  # default, if not specfied, is 'rt' (round-trip)
+def load_lessons(yaml_type="safe") -> dict:
+    yaml = YAML(typ=yaml_type)  # default, if not specfied, is 'rt' (round-trip)
     with (pkg_resources.files(workmanship) / "lessons.yml").open("rt") as f:
         return yaml.load(f)
 
