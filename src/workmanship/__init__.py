@@ -199,8 +199,13 @@ def typing_tutorial(win, lessons):
                 win.clear()
 
 
-def main(*args):
+def load_lessons() -> dict:
     yaml = YAML(typ="safe")  # default, if not specfied, is 'rt' (round-trip)
-    with (pkg_resources.files(workmanship) / "data.yml").open("rt") as f:
-        data = yaml.load(f)
-    curses.wrapper(typing_tutorial, data["layouts"]["workman"])
+    with (pkg_resources.files(workmanship) / "lessons.yml").open("rt") as f:
+        return yaml.load(f)
+
+
+def main(*args):
+    data = load_lessons()
+    lessons = data["layouts"]["workman"]
+    curses.wrapper(typing_tutorial, lessons)
