@@ -4,14 +4,51 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "workmanship"
+description = "A curses terminal app to practice typing for various keyboard layouts"
 dynamic = ["version"]
 requires-python = ">=3.8"
 dependencies = [
     "ruamel.yaml",
 ]
+readme = "README.md"
+license = {file = "COPYING.txt"}
+keywords = [
+    "typing",
+    "keyboard",
+    "curses",
+    "terminal",
+    "tutorial",
+    "practice",
+    "learn",
+    "layout"
+]
+classifiers=[
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Environment :: Console :: Curses",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+    "Natural Language :: English",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: OS Independent",
+    "Operating System :: POSIX",
+    "Operating System :: Unix",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Education",
+    "Topic :: Games/Entertainment :: Puzzle Games",
+]
 
 [project.scripts]
 workmanship = "workmanship:main"
+
+[project.urls]
+homepage = "https://github.com/ankostis/workmanship"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
