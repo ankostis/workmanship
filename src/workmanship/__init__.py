@@ -162,7 +162,7 @@ def typing_tutorial(win, lessons):
                 if not unfit_title:
                     unfit_title = i
             else:
-                win.addstr(i + titles_y, 0, f"{i}: {title}")
+                win.addstr(i + titles_y, 0, f"{i+1}: {title}")
         if unfit_title:
             win.addstr(last_y, 0, f"{unfit_title}...{i}: {title}")
 
@@ -191,7 +191,7 @@ def typing_tutorial(win, lessons):
         else:
             try:
                 lesson = int(sel)
-                title, text = list(lessons.items())[lesson]
+                title, text = list(lessons.items())[lesson - 1]
             except (ValueError, IndexError):
                 win.addstr(err_y, 0, f"Invalid lesson number!", curses.A_BOLD)
             else:
