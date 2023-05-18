@@ -55,3 +55,8 @@ package-dir = {"" = "src"}
 
 [tool.setuptools_scm]
 write_to = "src/workmanship/_version.py"
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+]
