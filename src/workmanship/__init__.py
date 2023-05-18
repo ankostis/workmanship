@@ -15,6 +15,7 @@ import functools as fnt
 import importlib.resources as pkg_resources
 import re
 import time
+from collections import UserDict
 from importlib.metadata import PackageNotFoundError, version
 from typing import Any
 
@@ -145,51 +146,47 @@ def typing_lesson(win, title, text) -> str:
     return ok
 
 
-def menu_records(*items, **kw) -> dict[str, tuple[str, Any]]:
-    counter = 1
-    visited = {}
+class Menu(UserDict[str, tuple[str, Any]]):  # {key: (title, value)}
+    def __init__(self, *items, **kw) -> dict[str, tuple[str, Any]]:
+        super().__init__()
+        self.counter = 1
 
-    def entry_key_title(entry):
-        nonlocal counter
+        def item2records(item) -> list[tuple[str | tuple[str, str], Any]]:
+            match item:
+                case dict():
+                    return item.items()
+                case key, title, value:
+                    return [((key, title), value)]
+                case entry, value:
+                    return [(entry, value)]
+                case _:
+                    return [(item, None)]
 
+        # Intermediate structure accepting menu titles w/ or w/o keys ("entries").
+        item_records: list[tuple[str | tuple[str, str], Any]] = [
+            (entry, value)
+            for item in [*items, kw]
+            for entry, value in item2records(item)
+        ]
+
+        for entry, v in item_records:
+            self.__setitem__(entry, v)
+
+    def __setitem__(self, entry, value=None):
         match entry:
             case (str(key), str(title)) if len(key) == 1:
                 pass
             case str(title):
-                key = str(counter)
-                counter += 1
+                key = str(self.counter)
+                self.counter += 1
             case _:
-                raise ValueError(f"Invalid menu item: {entry}")
-                
+                raise ValueError(f"Invalid menu entry: {entry}")
+
         key = key.lower()  # Menu execution reads keyboards in lowercase.
-        if key in visited:
-            raise AssertionError(f"Dupe key({key} - {title}) over {visited[key]}")
-        else:
-            visited[key] = title
+        if key in self.data:
+            raise AssertionError(f"Dupe key({key} - {title}) over {self.data[key]}")
 
-        return key, title
-
-    def parse_item(item):
-        match item:
-            case dict():
-                item_records.extend(item.items())
-            case key, title, value:
-                item_records.append(((key, title), value))
-            case entry, value:
-                item_records.append((entry, value))
-            case _:
-                item_records.append((item, None))
-
-    item_records: list[tuple[str, tuple[str, Any]]] = []  # [(key, (title, value))]
-
-    for item in [*items, kw]:
-        parse_item(item)
-
-    return {
-        key: (title, v)
-        for entry, v in item_records
-        for key, title in [entry_key_title(entry)]
-    }
+        self.data[key] = (title, value)
 
 
 def toggle_beep_on_errors(_):
@@ -230,7 +227,7 @@ def typing_tutorial(win, layouts):
         maxy, _ = win.getmaxyx()
         last_y = maxy - 3  # -1 win's last row, -1 status bar, -1 for last item
 
-        records = menu_records(
+        menu = Menu(
             (
                 "b",
                 f"Beep on errors {'(enabled)' if beep_on_errors else '(disabled)'}",
@@ -250,7 +247,7 @@ def typing_tutorial(win, layouts):
 
         # TODO: use subpad to handle overflows
         overflow_titles = []
-        for j, (tkey, (title, _)) in enumerate(records.items()):
+        for j, (tkey, (title, _)) in enumerate(menu.items()):
             y = titles_y + j
             if y >= last_y:
                 overflow_titles.append(tkey)
@@ -260,7 +257,7 @@ def typing_tutorial(win, layouts):
         if overflow_titles:
             win.addstr(last_y, 0, f"{', '.join(overflow_titles)} - <hidden>")
 
-        letters = "".join([k for k in records if not re.match("^\d+$", k)])
+        letters = "".join([k for k in menu if not re.match("^\d+$", k)])
         win.addstr(
             promp_y, 0, f"Type a lesson number or [{letters}]? ", curses.A_ITALIC
         )
@@ -270,10 +267,10 @@ def typing_tutorial(win, layouts):
         if sel == "q" or all(i == ESC_CHAR for i in sel):
             break
 
-        if sel not in records:
+        if sel not in menu:
             status_bar(win, f"Invalid selection: {sel}", curses.A_BOLD)
         else:
-            title, action = records[sel]
+            title, action = menu[sel]
             if callable(action):
                 statusbar_args = action(title)
                 status_bar(win, *statusbar_args)

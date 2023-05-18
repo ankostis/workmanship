@@ -23,7 +23,7 @@ import workmanship as wm
 def test_menu(item, exp):
     if isinstance(exp, Exception):
         with pytest.raises(type(exp), match=str(exp)):
-            wm.menu_records(item)
+            wm.Menu(item)
     else:
-        menu = wm.menu_records(item)
+        menu = wm.Menu(item)
         assert menu == exp
