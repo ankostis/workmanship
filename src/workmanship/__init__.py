@@ -195,13 +195,21 @@ def menu_records(*items, **kw) -> dict[str, tuple[str, Any]]:
 def toggle_beep_on_errors(_):
     global beep_on_errors
 
-    beep_on_errors = ~beep_on_errors
+    beep_on_errors = not beep_on_errors
+    return (
+        f"Toggled beep on errors, from {not beep_on_errors} -> {beep_on_errors}",
+        curses.A_ITALIC,
+    )
 
 
 def select_layout(_, layout):
     global selected_layout
 
+    old_layout = selected_layout
     selected_layout = layout
+    statusbar = (f"Switched layout from {old_layout} -> {layout}", curses.A_ITALIC)
+
+    return statusbar
 
 
 def typing_tutorial(win, layouts):
@@ -267,8 +275,8 @@ def typing_tutorial(win, layouts):
         else:
             title, action = records[sel]
             if callable(action):
-                action(title)
-                status_bar(win)
+                statusbar_args = action(title)
+                status_bar(win, *statusbar_args)
 
             else:
                 typing_lesson(win, title, action)
