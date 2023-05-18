@@ -11,10 +11,12 @@ converted hastily from dvorak (so gibberish grams & words).
 
 """
 import curses
+import functools as fnt
 import importlib.resources as pkg_resources
+import re
 import time
 from importlib.metadata import PackageNotFoundError, version
-from pathlib import Path
+from typing import Any
 
 from ruamel.yaml import YAML
 
@@ -143,9 +145,66 @@ def typing_lesson(win, title, text) -> str:
     return ok
 
 
-def typing_tutorial(win, layouts):
-    global beep_on_errors, selected_layout
+def menu_records(*items, **kw) -> dict[str, tuple[str, Any]]:
+    counter = 1
+    visited = {}
 
+    def entry_key_title(entry):
+        nonlocal counter
+
+        match entry:
+            case (str(key), str(title)) if len(key) == 1:
+                pass
+            case str(title):
+                key = str(counter)
+                counter += 1
+            case _:
+                raise ValueError(f"Invalid menu item: {entry}")
+                
+        key = key.lower()  # Menu execution reads keyboards in lowercase.
+        if key in visited:
+            raise AssertionError(f"Dupe key({key} - {title}) over {visited[key]}")
+        else:
+            visited[key] = title
+
+        return key, title
+
+    def parse_item(item):
+        match item:
+            case dict():
+                item_records.extend(item.items())
+            case key, title, value:
+                item_records.append(((key, title), value))
+            case entry, value:
+                item_records.append((entry, value))
+            case _:
+                item_records.append((item, None))
+
+    item_records: list[tuple[str, tuple[str, Any]]] = []  # [(key, (title, value))]
+
+    for item in [*items, kw]:
+        parse_item(item)
+
+    return {
+        key: (title, v)
+        for entry, v in item_records
+        for key, title in [entry_key_title(entry)]
+    }
+
+
+def toggle_beep_on_errors(_):
+    global beep_on_errors
+
+    beep_on_errors = ~beep_on_errors
+
+
+def select_layout(_, layout):
+    global selected_layout
+
+    selected_layout = layout
+
+
+def typing_tutorial(win, layouts):
     min_height = 6  # title, error, menu(x2), status-bar
     promp_y = 0
     err_y = 1
@@ -161,35 +220,41 @@ def typing_tutorial(win, layouts):
         curses.echo()
         curses.curs_set(2)
         maxy, _ = win.getmaxyx()
-        last_y = maxy - 4  # -1 win's last row, -1 status bar, -1 for last item
+        last_y = maxy - 3  # -1 win's last row, -1 status bar, -1 for last item
 
-        titles = {l[0]: l for l in layouts}
-        for j, (tkey, title) in enumerate(titles.items()):
-            win.addstr(
-                titles_y + j,
-                0,
-                f"{tkey}: {title} {'(selected)' if title == selected_layout else ''}",
-            )
-            win.clrtoeol()
-        j += 1
-        unfit_title = 0
-        lessons = layouts[selected_layout]
-        for i, title in enumerate(lessons):
-            y = titles_y + j + i
+        records = menu_records(
+            (
+                "b",
+                f"Beep on errors {'(enabled)' if beep_on_errors else '(disabled)'}",
+                toggle_beep_on_errors,
+            ),
+            *[
+                (
+                    l[0].lower(),
+                    f"{l.title()} layout{' (selected)' if l == selected_layout else ''}",
+                    fnt.partial(select_layout, layout=l),
+                )
+                for l in layouts
+            ],
+            (("q", "Quit"), None),
+            layouts[selected_layout],
+        )
+
+        # TODO: use subpad to handle overflows
+        overflow_titles = []
+        for j, (tkey, (title, _)) in enumerate(records.items()):
+            y = titles_y + j
             if y >= last_y:
-                if not unfit_title:
-                    unfit_title = i
+                overflow_titles.append(tkey)
             else:
-                win.addstr(y, 0, f"{i+1}: {title}")
-        if unfit_title:
-            win.addstr(last_y, 0, f"{unfit_title}...{i}: {title}")
+                win.addstr(titles_y + j, 0, f"{tkey} - {title}")
+                win.clrtoeol()
+        if overflow_titles:
+            win.addstr(last_y, 0, f"{', '.join(overflow_titles)} - <hidden>")
 
+        letters = "".join([k for k in records if not re.match("^\d+$", k)])
         win.addstr(
-            promp_y,
-            0,
-            f"Type a lesson number or {'no-' if beep_on_errors else ''}[B]eep on errors"
-            f", [Q]uit: ",
-            curses.A_ITALIC,
+            promp_y, 0, f"Type a lesson number or [{letters}]? ", curses.A_ITALIC
         )
         win.clrtoeol()
         sel = win.getstr().decode("utf-8").lower()
@@ -197,26 +262,16 @@ def typing_tutorial(win, layouts):
         if sel == "q" or all(i == ESC_CHAR for i in sel):
             break
 
-        if sel == "b":
-            beep_on_errors = ~beep_on_errors
-            win.addstr(
-                err_y,
-                0,
-                f"Beep set to {'ON' if beep_on_errors else 'OFF'}",
-                curses.A_BOLD,
-            )
-            win.clrtoeol()
-        elif sel in titles:
-            selected_layout = titles[sel]
+        if sel not in records:
+            status_bar(win, f"Invalid selection: {sel}", curses.A_BOLD)
         else:
-            try:
-                lesson = int(sel)
+            title, action = records[sel]
+            if callable(action):
+                action(title)
+                status_bar(win)
 
-                title, text = list(lessons.items())[lesson - 1]
-            except (ValueError, IndexError):
-                win.addstr(err_y, 0, f"Invalid selection!", curses.A_BOLD)
             else:
-                typing_lesson(win, title, text)
+                typing_lesson(win, title, action)
                 win.clear()
 
 
