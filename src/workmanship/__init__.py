@@ -188,6 +188,10 @@ class Menu(UserDict[str, tuple[str, Any]]):  # {key: (title, value)}
 
         self.data[key] = (title, value)
 
+    @property
+    def letters(self):
+        return "".join([k for k in self.data if not re.match(r"^\d+$", k)])
+
 
 def toggle_beep_on_errors(_):
     global beep_on_errors
@@ -257,9 +261,8 @@ def typing_tutorial(win, layouts):
         if overflow_titles:
             win.addstr(last_y, 0, f"{', '.join(overflow_titles)} - <hidden>")
 
-        letters = "".join([k for k in menu if not re.match("^\d+$", k)])
         win.addstr(
-            promp_y, 0, f"Type a lesson number or [{letters}]? ", curses.A_ITALIC
+            promp_y, 0, f"Type a lesson number or [{menu.letters}]? ", curses.A_ITALIC
         )
         win.clrtoeol()
         sel = win.getstr().decode("utf-8").lower()
