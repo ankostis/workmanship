@@ -17,7 +17,7 @@ import time
 
 from ruamel.yaml import YAML
 
-from . import textmenus
+from . import TerminalError, textmenus
 
 ESC_CHAR = chr(27)
 RET_CHAR = "↳"  # chr(0x21B3)
@@ -188,8 +188,8 @@ def typing_tutorial(win, layouts):
         menu_rows = menu.rows(maxx)
         need_height = titles_y + len(menu_rows) + 2  # +2 for emptyline + statusbar
         if need_height >= maxy:
-            raise IOError(
-                f"Terminal height({maxy}) too small, must be > ({need_height}) rows."
+            raise TerminalError(
+                f"Terminal height({maxy}) too small, must have x{need_height} rows or more."
             )
         for y, row in enumerate(menu_rows, start=titles_y):
             win.addstr(y, 0, row)
@@ -225,4 +225,7 @@ def load_lessons(yaml_type="safe") -> dict:
 
 def main(*args):
     data = load_lessons()
-    curses.wrapper(typing_tutorial, data["layouts"])
+    try:
+        curses.wrapper(typing_tutorial, data["layouts"])
+    except TerminalError as ex:
+        raise SystemExit(str(ex))

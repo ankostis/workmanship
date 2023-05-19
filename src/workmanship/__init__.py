@@ -21,3 +21,7 @@ __title__ = "workmanship"
 __summary__ = __doc__.splitlines()[0]
 __license__ = "GPLv3"
 __uri__ = "https://github.com/ankostis/workmanship"
+
+
+class TerminalError(Exception):
+    pass

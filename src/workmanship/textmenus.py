@@ -4,6 +4,8 @@ from collections import UserDict
 from math import ceil
 from typing import Any
 
+from . import TerminalError
+
 
 def chunk(it, size):
     it = iter(it)
@@ -31,8 +33,8 @@ def tabulate(texts, max_width, gutter="  "):
         widths_per_ncols.append((ncols, nrows, widths))
 
     if not widths_per_ncols:
-        raise IOError(
-            f"Terminal width({max_width}) too small even for 1 column to fit."
+        raise TerminalError(
+            f"Terminal width({max_width}) too small, must have x{total_width} columns or more."
         )
 
     ncols, nrows, widths = widths_per_ncols[-1]
