@@ -13,10 +13,13 @@ converted hastily from dvorak (so gibberish grams & words).
 import curses
 import functools as fnt
 import importlib.resources as pkg_resources
+import itertools as itt
 import re
 import time
 from collections import UserDict
 from importlib.metadata import PackageNotFoundError, version
+from math import ceil
+from operator import le
 from typing import Any
 
 from ruamel.yaml import YAML
@@ -146,6 +149,48 @@ def typing_lesson(win, title, text) -> str:
     return ok
 
 
+def chunk(it, size):
+    it = iter(it)
+    return iter(lambda: tuple(itt.islice(it, size)), ())
+
+
+def tabulate(texts, max_width, gutter="  "):
+    ntexts = len(texts)
+
+    def estimate_max_ncolumns(max_width, lengths):
+        last_col_width = ()  # Returned if width wasn't enough even for 1 column.
+        for ncols in itt.count(1):
+            nrows = ceil(ntexts / ncols)
+            col_widths = [max(i) for i in chunk(lengths, nrows)]
+            total_width = sum(col_widths) + (ncols - 1) * len(gutter)
+            if total_width >= max_width:
+                return last_col_width
+            last_col_width = col_widths
+
+        raise AssertionError("Must be unreachable")
+
+    lengths = [len(txt) for txt in texts]
+    col_widths = estimate_max_ncolumns(max_width, lengths)
+    if not col_widths:
+        raise IOError(
+            f"Terminal width({max_width}) too small even for 1 column to fit."
+        )
+
+    def join_row(texts, col_widths):
+        return gutter.join(
+            f"{txt:{width}}" for txt, width in zip(texts, col_widths, strict=True)
+        )
+
+    ncols = len(col_widths)
+    nrows = ceil(ntexts / ncols)
+    rows = [
+        join_row(row_texts, col_widths)
+        for row_texts in itt.zip_longest(*chunk(texts, nrows), fillvalue="")
+    ]
+
+    return rows
+
+
 class Menu(UserDict[str, tuple[str, Any]]):  # {key: (title, value)}
     def __init__(self, *items, **kw) -> dict[str, tuple[str, Any]]:
         super().__init__()
@@ -192,6 +237,13 @@ class Menu(UserDict[str, tuple[str, Any]]):  # {key: (title, value)}
     def letters(self):
         return "".join([k for k in self.data if not re.match(r"^\d+$", k)])
 
+    def rows(self, max_width, gutter="  "):
+        return tabulate(
+            [f"{key} - {title}" for key, (title, _) in self.data.items()],
+            max_width,
+            gutter,
+        )
+
 
 def toggle_beep_on_errors(_):
     global beep_on_errors
@@ -216,20 +268,15 @@ def select_layout(_, layout):
 def typing_tutorial(win, layouts):
     min_height = 6  # title, error, menu(x2), status-bar
     promp_y = 0
-    err_y = 1
     titles_y = 2
 
     curses.set_escdelay(150)
     curses.initscr()
-    maxy, maxx = win.getmaxyx()
-    if maxy < min_height:
-        raise SystemExit(f"Terminal height too small (< {min_height} rows)")
 
     while True:
         curses.echo()
         curses.curs_set(2)
-        maxy, _ = win.getmaxyx()
-        last_y = maxy - 3  # -1 win's last row, -1 status bar, -1 for last item
+        maxy, maxx = win.getmaxyx()
 
         menu = Menu(
             (
@@ -249,17 +296,10 @@ def typing_tutorial(win, layouts):
             layouts[selected_layout],
         )
 
-        # TODO: use subpad to handle overflows
-        overflow_titles = []
-        for j, (tkey, (title, _)) in enumerate(menu.items()):
-            y = titles_y + j
-            if y >= last_y:
-                overflow_titles.append(tkey)
-            else:
-                win.addstr(titles_y + j, 0, f"{tkey} - {title}")
-                win.clrtoeol()
-        if overflow_titles:
-            win.addstr(last_y, 0, f"{', '.join(overflow_titles)} - <hidden>")
+        # FIXME: use subpad to handle overflows
+        for y, row in enumerate(menu.rows(maxx), start=titles_y):
+            win.addstr(y, 0, row)
+            win.clrtoeol()
 
         win.addstr(
             promp_y, 0, f"Type a lesson number or [{menu.letters}]? ", curses.A_ITALIC
