@@ -157,34 +157,37 @@ def chunk(it, size):
 def tabulate(texts, max_width, gutter="  "):
     ntexts = len(texts)
 
-    def estimate_max_ncolumns(max_width, lengths):
-        last_col_width = ()  # Returned if width wasn't enough even for 1 column.
-        for ncols in itt.count(1):
-            nrows = ceil(ntexts / ncols)
-            col_widths = [max(i) for i in chunk(lengths, nrows)]
-            total_width = sum(col_widths) + (ncols - 1) * len(gutter)
-            if total_width >= max_width:
-                return last_col_width
-            last_col_width = col_widths
+    def calc_column_widths(item_lengths, ncols):
+        nrows = ceil(ntexts / ncols)
+        return nrows, [max(i) for i in chunk(item_lengths, nrows)]
 
-        raise AssertionError("Must be unreachable")
-
+    ## Find the maximum number of columns fitting in the terminal width.
+    #
+    #  We start with 1 column and keep adding columns as long as total-width
+    # remains under the given `max_width` limit.
     lengths = [len(txt) for txt in texts]
-    col_widths = estimate_max_ncolumns(max_width, lengths)
-    if not col_widths:
+    widths_per_ncols = []
+    for ncols in itt.count(1):
+        nrows, widths = calc_column_widths(lengths, ncols)
+        total_width = sum(widths) + (ncols - 1) * len(gutter)
+        if total_width >= max_width:
+            break
+        widths_per_ncols.append((ncols, nrows, widths))
+
+    if not widths_per_ncols:
         raise IOError(
             f"Terminal width({max_width}) too small even for 1 column to fit."
         )
 
-    def join_row(texts, col_widths):
+    ncols, nrows, widths = widths_per_ncols[-1]
+
+    def join_row(texts, widths):
         return gutter.join(
-            f"{txt:{width}}" for txt, width in zip(texts, col_widths, strict=True)
+            f"{txt:{width}}" for txt, width in zip(texts, widths, strict=True)
         )
 
-    ncols = len(col_widths)
-    nrows = ceil(ntexts / ncols)
     rows = [
-        join_row(row_texts, col_widths)
+        join_row(row_texts, widths)
         for row_texts in itt.zip_longest(*chunk(texts, nrows), fillvalue="")
     ]
 
