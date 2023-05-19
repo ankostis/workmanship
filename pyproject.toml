@@ -45,7 +45,7 @@ classifiers=[
 ]
 
 [project.scripts]
-workmanship = "workmanship:main"
+workmanship = "workmanship.lessons:main"
 
 [project.urls]
 homepage = "https://github.com/ankostis/workmanship"

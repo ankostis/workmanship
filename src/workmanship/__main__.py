@@ -1,6 +1,6 @@
 import sys
 
-import workmanship
+from workmanship import lessons
 
 if __name__ == "__main__":
-    workmanship.main(*sys.argv)
+    lessons.main(*sys.argv)
