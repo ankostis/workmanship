@@ -13,16 +13,12 @@ converted hastily from dvorak (so gibberish grams & words).
 import curses
 import functools as fnt
 import importlib.resources as pkg_resources
-import itertools as itt
-import re
 import time
-from collections import UserDict
 from importlib.metadata import PackageNotFoundError, version
-from math import ceil
-from operator import le
-from typing import Any
 
 from ruamel.yaml import YAML
+
+from . import textmenus
 
 try:
     __version__ = version("package-name")
@@ -149,105 +145,6 @@ def typing_lesson(win, title, text) -> str:
     return ok
 
 
-def chunk(it, size):
-    it = iter(it)
-    return iter(lambda: tuple(itt.islice(it, size)), ())
-
-
-def tabulate(texts, max_width, gutter="  "):
-    ntexts = len(texts)
-
-    def calc_column_widths(item_lengths, ncols):
-        nrows = ceil(ntexts / ncols)
-        return nrows, [max(i) for i in chunk(item_lengths, nrows)]
-
-    ## Find the maximum number of columns fitting in the terminal width.
-    #
-    #  We start with 1 column and keep adding columns as long as total-width
-    # remains under the given `max_width` limit.
-    lengths = [len(txt) for txt in texts]
-    widths_per_ncols = []
-    for ncols in itt.count(1):
-        nrows, widths = calc_column_widths(lengths, ncols)
-        total_width = sum(widths) + (ncols - 1) * len(gutter)
-        if total_width >= max_width:
-            break
-        widths_per_ncols.append((ncols, nrows, widths))
-
-    if not widths_per_ncols:
-        raise IOError(
-            f"Terminal width({max_width}) too small even for 1 column to fit."
-        )
-
-    ncols, nrows, widths = widths_per_ncols[-1]
-
-    def join_row(texts, widths):
-        return gutter.join(
-            f"{txt:{width}}" for txt, width in zip(texts, widths, strict=True)
-        )
-
-    rows = [
-        join_row(row_texts, widths)
-        for row_texts in itt.zip_longest(*chunk(texts, nrows), fillvalue="")
-    ]
-
-    return rows
-
-
-class Menu(UserDict[str, tuple[str, Any]]):  # {key: (title, value)}
-    def __init__(self, *items, **kw) -> dict[str, tuple[str, Any]]:
-        super().__init__()
-        self.counter = 1
-
-        def item2records(item) -> list[tuple[str | tuple[str, str], Any]]:
-            match item:
-                case dict():
-                    return item.items()
-                case key, title, value:
-                    return [((key, title), value)]
-                case entry, value:
-                    return [(entry, value)]
-                case _:
-                    return [(item, None)]
-
-        # Intermediate structure accepting menu titles w/ or w/o keys ("entries").
-        item_records: list[tuple[str | tuple[str, str], Any]] = [
-            (entry, value)
-            for item in [*items, kw]
-            for entry, value in item2records(item)
-        ]
-
-        for entry, v in item_records:
-            self.__setitem__(entry, v)
-
-    def __setitem__(self, entry, value=None):
-        match entry:
-            case (str(key), str(title)) if len(key) == 1:
-                pass
-            case str(title):
-                key = str(self.counter)
-                self.counter += 1
-            case _:
-                raise ValueError(f"Invalid menu entry: {entry}")
-
-        key = key.lower()  # Menu execution reads keyboards in lowercase.
-        if key in self.data:
-            raise AssertionError(f"Dupe key({key} - {title}) over {self.data[key]}")
-
-        self.data[key] = (title, value)
-
-    @property
-    def letters(self):
-        return "".join([k for k in self.data if not re.match(r"^\d+$", k)])
-
-    def rows(self, max_width, gutter="  "):
-        return tabulate(
-            [f"{key} - {title}" for key, (title, _) in self.data.items()],
-            max_width,
-            gutter,
-        )
-
-
 def toggle_beep_on_errors(_):
     global beep_on_errors
 
@@ -281,7 +178,7 @@ def typing_tutorial(win, layouts):
         curses.curs_set(2)
         maxy, maxx = win.getmaxyx()
 
-        menu = Menu(
+        menu = textmenus.Menu(
             (
                 "b",
                 f"Beep on errors {'(enabled)' if beep_on_errors else '(disabled)'}",
@@ -299,7 +196,7 @@ def typing_tutorial(win, layouts):
             layouts[selected_layout],
         )
 
-        # FIXME: use subpad to handle overflows
+        # FIXME: use subpad to handle `maxy` overflows
         for y, row in enumerate(menu.rows(maxx), start=titles_y):
             win.addstr(y, 0, row)
             win.clrtoeol()

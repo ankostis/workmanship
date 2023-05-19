@@ -4,7 +4,7 @@ from string import ascii_letters
 
 import pytest
 
-import workmanship as wm
+from workmanship import textmenus
 
 
 @pytest.mark.parametrize(
@@ -27,9 +27,9 @@ import workmanship as wm
 def test_menu(item, exp):
     if isinstance(exp, Exception):
         with pytest.raises(type(exp), match=str(exp)):
-            wm.Menu(item)
+            textmenus.Menu(item)
     else:
-        menu = wm.Menu(item)
+        menu = textmenus.Menu(item)
         assert menu == exp
 
 
@@ -47,6 +47,6 @@ def test_tabulate_smoke(nitems, max_width, gutter):
     texts = ["".join(rnd.choices(ascii_letters, k=l)) for l in lengths]
     gutter = "  "
 
-    rows = wm.tabulate(texts, max_width, gutter)
+    rows = textmenus.tabulate(texts, max_width, gutter)
     for r in rows:
         assert len(r) < max_width
