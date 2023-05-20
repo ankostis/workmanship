@@ -34,7 +34,8 @@ def tabulate(texts, max_width, gutter="  "):
 
     if not widths_per_ncols:
         raise TerminalError(
-            f"Terminal width({max_width}) too small, must have x{total_width} columns or more."
+            f"Terminal width({max_width}) too small"
+            f", must have more than x{total_width} columns."
         )
 
     ncols, nrows, widths = widths_per_ncols[-1]

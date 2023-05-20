@@ -71,7 +71,7 @@ def dump_stats(win, total_len, start_time, hits, misses):
     status_bar(win, stats, curses.A_REVERSE)
 
 
-def typing_lesson(win, title, text) -> str:
+def run_typing_lesson(win, title, text) -> str:
     text = text.strip()
     assert text
     total_len = len(text)
@@ -79,7 +79,7 @@ def typing_lesson(win, title, text) -> str:
     lines = text.strip().splitlines()
     lines = [f"{l}\n" for l in lines]
 
-    win.clear()
+    win.erase()
     curses.noecho()
     curses.curs_set(False)
 
@@ -154,67 +154,72 @@ def select_layout(_, layout):
     return statusbar
 
 
-def typing_tutorial(win, layouts):
-    promp_y = 0
-    titles_y = 2
+def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
+    menu = textmenus.Menu(
+        (
+            "b",
+            f"Beep on errors {'(enabled)' if beep_on_errors else '(disabled)'}",
+            toggle_beep_on_errors,
+        ),
+        *[
+            (
+                l[0].lower(),
+                f"{l.title()} layout{' (selected)' if l == selected_layout else ''}",
+                fnt.partial(select_layout, layout=l),
+            )
+            for l in layouts
+        ],
+        (("q", "Quit"), None),
+        layouts[selected_layout],
+    )
 
+    # FIXME: use subpad to handle `maxy` overflows
+    maxy, maxx = win.getmaxyx()
+    menu_rows = menu.rows(maxx)
+    need_height = titles_y + len(menu_rows) + 2  # +2 for emptyline + statusbar
+    if need_height >= maxy:
+        raise TerminalError(
+            f"Terminal height({maxy}) too small"
+            f", must have more than x{need_height} rows or more than  x{maxx} columns."
+        )
+    for y, row in enumerate(menu_rows, start=titles_y):
+        win.addstr(y, 0, row)
+        win.clrtoeol()
+
+    win.addstr(
+        prompt_y, 0, f"Type a lesson number or [{menu.letters}]? ", curses.A_ITALIC
+    )
+    sel = win.getstr().decode("utf-8").lower()
+    if not sel:
+        return
+
+    if sel == "q" or all(i == ESC_CHAR for i in sel):
+        return True
+
+    if sel not in menu:
+        status_bar(win, f"Invalid selection: {sel}", curses.A_BOLD)
+    else:
+        title, action = menu[sel]
+        if callable(action):
+            statusbar_args = action(title)
+            status_bar(win, *statusbar_args)
+        else:
+            run_typing_lesson(win, title, action)
+
+
+def typing_tutorial(win, layouts):
     curses.set_escdelay(150)
-    curses.initscr()
 
     while True:
         curses.echo()
         curses.curs_set(2)
-        maxy, maxx = win.getmaxyx()
-
-        menu = textmenus.Menu(
-            (
-                "b",
-                f"Beep on errors {'(enabled)' if beep_on_errors else '(disabled)'}",
-                toggle_beep_on_errors,
-            ),
-            *[
-                (
-                    l[0].lower(),
-                    f"{l.title()} layout{' (selected)' if l == selected_layout else ''}",
-                    fnt.partial(select_layout, layout=l),
-                )
-                for l in layouts
-            ],
-            (("q", "Quit"), None),
-            layouts[selected_layout],
-        )
-
-        # FIXME: use subpad to handle `maxy` overflows
-        menu_rows = menu.rows(maxx)
-        need_height = titles_y + len(menu_rows) + 2  # +2 for emptyline + statusbar
-        if need_height >= maxy:
-            raise TerminalError(
-                f"Terminal height({maxy}) too small, must have x{need_height} rows or more."
-            )
-        for y, row in enumerate(menu_rows, start=titles_y):
-            win.addstr(y, 0, row)
-            win.clrtoeol()
-
-        win.addstr(
-            promp_y, 0, f"Type a lesson number or [{menu.letters}]? ", curses.A_ITALIC
-        )
-        win.clrtoeol()
-        sel = win.getstr().decode("utf-8").lower()
-
-        if sel == "q" or all(i == ESC_CHAR for i in sel):
-            break
-
-        if sel not in menu:
-            status_bar(win, f"Invalid selection: {sel}", curses.A_BOLD)
-        else:
-            title, action = menu[sel]
-            if callable(action):
-                statusbar_args = action(title)
-                status_bar(win, *statusbar_args)
-
-            else:
-                typing_lesson(win, title, action)
-                win.clear()
+        win.erase()
+        try:
+            if lessons_menu(win, layouts):
+                break
+        except TerminalError as ex:
+            win.addstr(0, 0, str(ex), curses.A_BOLD)  # | curses.A_ITALIC)
+            win.getkey()
 
 
 def load_lessons(yaml_type="safe") -> dict:
@@ -225,7 +230,4 @@ def load_lessons(yaml_type="safe") -> dict:
 
 def main(*args):
     data = load_lessons()
-    try:
-        curses.wrapper(typing_tutorial, data["layouts"])
-    except TerminalError as ex:
-        raise SystemExit(str(ex))
+    curses.wrapper(typing_tutorial, data["layouts"])
