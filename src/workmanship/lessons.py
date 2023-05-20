@@ -28,10 +28,10 @@ beep_on_errors = False
 
 
 def status_bar(win, txt=None, attr=curses.A_NORMAL, offset=0):
-    maxy, _ = win.getmaxyx()
+    maxy, maxx = win.getmaxyx()
     maxy -= 1 + offset
     if txt:
-        win.addstr(maxy, 0, txt, attr)
+        win.addstr(maxy, 0, txt[: maxx - 1], attr)
     else:
         win.move(maxy, 0)
     win.clrtoeol()
