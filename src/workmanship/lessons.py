@@ -23,7 +23,7 @@ ESC_CHAR = chr(27)
 RET_CHAR = "↳"  # chr(0x21B3)
 
 
-selected_layout = ("d", "dvorak")
+selected_layout = ("d", "Dvorak")
 beep_on_errors = False
 
 
@@ -170,9 +170,7 @@ def select_layout(_, layout):
 
 def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
     def mark_selected(k, t):
-        return (
-            f"{t.title()!r} layout{' (selected)' if (k, t) == selected_layout else ''}"
-        )
+        return f"{t!r} layout{' (selected)' if (k, t) == selected_layout else ''}"
 
     menu = textmenus.Menu(
         (

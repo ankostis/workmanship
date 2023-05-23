@@ -1,5 +1,5 @@
 layouts:
-  [d, dvorak]:
+  [d, Dvorak]:
     "UH: home row, index fingers": |
       uuuu hhhh uuuu hhhh uuuu hhhh uuuu hhhh uuuu hhhh uuuu hhhh uuuu hhhu
       uuuu hhhh uuuu hhhh uuuu hhhh uuuu hhhh huuu uuuh huhu uuhh hhuu uhuh
@@ -424,7 +424,7 @@ layouts:
       so inflexible and xenophobic.
       An exuberant Bill Clinton blew into his saxophone before the ambassadors; it
       was an extraordinary experience that nobody could explain.
-  [w, workman]:
+  [w, Workman]:
     "TN: home row, index fingers": |
       tttt nnnn tttt nnnn tttt nnnn tttt nnnn tttt nnnn tttt nnnn tttt nnnt
       tttt nnnn tttt nnnn tttt nnnn tttt nnnn nttt tttn ntnt ttnn nntt tntn
@@ -849,7 +849,7 @@ layouts:
       is goj;hvgk;h aoy vhoswnskgur
       Ao hvtkhpaoe Kg;; U;goeso k;h, goes ngi iavswnsoh khjsph enh alkaiiayspiz ge
       ,ai ao hvepaspygoapb hvwhpghouh enae osksyb ust;y hvw;agor
-  [wel, workman_EL]:
+  [wel, Workman(el)]:
     "ΤΝ: home row, index fingers": |
       ττττ νννν ττττ νννν ττττ νννν ττττ νννν ττττ νννν ττττ νννν ττττ ννντ
       ττττ νννν ττττ νννν ττττ νννν ττττ νννν ντττ τττν ντντ ττνν ννττ τντν
