@@ -2,7 +2,7 @@
 
 - See also [TODOs](https://github.com/ankostis/workmanship/wiki/TODO).
 
-## 23 May 2023: v0.2.0
+## 23 May 2023: v0.2.1
 
 - FIX: was skipping last typing row of lessons.
 - fix: was clearing screen w/ menu replies.
