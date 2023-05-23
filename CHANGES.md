@@ -1,5 +1,17 @@
 # CHANGES
 
+## 23 May 2023: v0.2.0
+
+- FIX: was skipping last typing row of lessons.
+- fix: was clearing screen w/ menu replies.
+- FEAT: Pause lesson when ESC pressed, any key to continue, 
+  without accumulating time.
+- FEAT: Workman Greek(EL) layout (converted from dvorak).
+- feat: read widechar while typing lessons run (to support other encodings).
+- break: layouts dict in yaml MUST now specify their selection-key,
+  like `key, title (so stopped deducing key from the 1t title-char).
+- feat(preproc): include also `aA` key in the conversion maps.
+
 ## 20 May 2023: v0.1.0
 
 - Fix: handle terminal resizing; menu notifies when term too small 
