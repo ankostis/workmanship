@@ -116,7 +116,7 @@ def run_typing_lesson(win, title, text) -> str:
                 win.chgat(y, x, 1, curses.A_NORMAL)
             x += 1
             if x >= len(row):
-                if y >= len(lines):
+                if y > len(lines):
                     ok = True
                     break
                 y += 1
