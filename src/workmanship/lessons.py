@@ -197,11 +197,11 @@ def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
         prompt_y, 0, f"Type a lesson number or [{menu.letters}]? ", curses.A_ITALIC
     )
     win.clrtoeol()
-    sel = win.get_wch()
-    if not sel or not isinstance(sel, str):
+    sel = win.getstr()
+    if not sel or not isinstance(sel, bytes):
         return
 
-    sel = sel.lower()
+    sel = sel.decode("utf-8").lower()
 
     if sel == "q" or all(i == ESC_CHAR for i in sel):
         return True
@@ -243,8 +243,4 @@ def load_lessons(yaml_type="safe") -> dict:
 
 def main(*args):
     data = load_lessons()
-    try:
-        curses.wrapper(typing_tutorial, data["layouts"])
-    except KeyboardInterrupt as ex:
-        # TODO: save scores
-        print("Interrupted with [Ctrl+C], scores not saved.", file=sys.stderr)
+    curses.wrapper(typing_tutorial, data["layouts"])
