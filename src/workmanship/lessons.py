@@ -23,7 +23,7 @@ ESC_CHAR = chr(27)
 RET_CHAR = "↳"  # chr(0x21B3)
 
 
-selected_layout = "dvorak"
+selected_layout = ("d", "dvorak")
 beep_on_errors = False
 
 
@@ -94,7 +94,7 @@ def run_typing_lesson(win, title, text) -> str:
     y = start_y
 
     status_bar(win, "Press any key to start (ESC to exit)", curses.A_ITALIC)
-    if (c := win.getkey()) == ESC_CHAR:
+    if (c := win.get_wch()) == ESC_CHAR:
         return
 
     ok = False
@@ -102,7 +102,7 @@ def run_typing_lesson(win, title, text) -> str:
     start_time = time.time()
     dump_stats(win, start_time, total_len, hits, misses)
 
-    while (c := win.getkey()) != ESC_CHAR:
+    while (c := win.get_wch()) != ESC_CHAR:
         row = lines[y - start_y]
         if c == chr(curses.KEY_RESIZE):
             pass
@@ -155,6 +155,11 @@ def select_layout(_, layout):
 
 
 def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
+    def mark_selected(k, t):
+        return (
+            f"{t.title()!r} layout{' (selected)' if (k, t) == selected_layout else ''}"
+        )
+
     menu = textmenus.Menu(
         (
             "b",
@@ -163,11 +168,11 @@ def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
         ),
         *[
             (
-                l[0].lower(),
-                f"{l.title()} layout{' (selected)' if l == selected_layout else ''}",
-                fnt.partial(select_layout, layout=l),
+                key,
+                mark_selected(key, title),
+                fnt.partial(select_layout, layout=(key, title)),
             )
-            for l in layouts
+            for key, title in layouts
         ],
         (("q", "Quit"), None),
         layouts[selected_layout],

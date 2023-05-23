@@ -7,20 +7,26 @@ import re
 
 from ruamel.yaml import YAML
 
-import workmanship
+from workmanship import lessons as ls
 
 trans_chars = {
-    "dvorak": (
+    ("d", "dvorak"): (
         "[{]}",
         "'\",<.>pPyYfFgGcCrRlL/?=+",
-        "oOeEuUiIdDhHtTnNsS-_",
+        "aAoOeEuUiIdDhHtTnNsS-_",
         ";:qQjJkKxXbBmMwWvVzZ",
     ),
-    "workman": (
+    ("w", "workman"): (
         "-_=+",
         "qQdDrRwWbBjJfFuUpP;:[{]}",
-        "sShHtTgGyYnNeEoOiI'\"",
+        "aAsShHtTgGyYnNeEoOiI'\"",
         "zZxXmMcCvVkKlL,<.>/?",
+    ),
+    ("wel", "workman_EL"): (
+        "-_=+",
+        ";:δΔρΡςΣβΒξΞφΦθΘπΠ;:[{]}",
+        "αΑσΣηΗτΤγΓυΥνΝεΕοΟιΙ'\"",
+        "ζΖχΧμΜψΨωΩκΚλΛ,<.>/?",
     ),
 }
 
@@ -47,14 +53,14 @@ def make_chars_trans_table(inp_layout: str, out_layout: str) -> dict:
     return str.maketrans("".join(inp_chars), "".join(out_chars))
 
 
-def append_layout(lessons, inp_layout: str, out_layout: str, out_fpath) -> dict:
-    trans = make_chars_trans_table(inp_layout, out_layout)
-
-    lessons = workmanship.load_lessons(yaml_type="rt")
+def convert_layouts(lessons, conversions: dict[str, str], out_fpath) -> dict:
+    lessons = ls.load_lessons(yaml_type="rt")
     layouts = lessons["layouts"]
 
-    new_layout = translate_lessons(trans, layouts[inp_layout])
-    layouts[out_layout] = new_layout
+    for inp_layout, out_layout in conversions.items():
+        trans = make_chars_trans_table(inp_layout, out_layout)
+        new_layout = translate_lessons(trans, layouts[inp_layout])
+        layouts[out_layout] = new_layout
 
     yaml = YAML()  # default, if not specfied, is 'rt' (round-trip)
     with open(out_fpath, "wt") as f:
@@ -62,4 +68,8 @@ def append_layout(lessons, inp_layout: str, out_layout: str, out_fpath) -> dict:
 
 
 if __name__ == "__main__":
-    append_layout(None, "dvorak", "workman", "lessons.yml")
+    conversions = {
+        ("d", "dvorak"): ("w", "workman"),
+        ("d", "dvorak"): ("wel", "workman_EL"),
+    }
+    convert_layouts(None, conversions, "lessons.yml")

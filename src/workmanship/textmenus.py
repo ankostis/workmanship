@@ -81,7 +81,7 @@ class Menu(UserDict[str, tuple[str, Any]]):  # {key: (title, value)}
 
     def __setitem__(self, entry, value=None):
         match entry:
-            case (str(key), str(title)) if len(key) == 1:
+            case (str(key), str(title)):
                 pass
             case str(title):
                 key = str(self.counter)
