@@ -196,9 +196,11 @@ def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
         prompt_y, 0, f"Type a lesson number or [{menu.letters}]? ", curses.A_ITALIC
     )
     win.clrtoeol()
-    sel = win.getstr().decode("utf-8").lower()
-    if not sel:
+    sel = win.get_wch()
+    if not sel or not isinstance(sel, str):
         return
+
+    sel = sel.lower()
 
     if sel == "q" or all(i == ESC_CHAR for i in sel):
         return True
