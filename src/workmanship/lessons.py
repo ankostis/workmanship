@@ -236,8 +236,11 @@ def typing_tutorial(win, layouts):
             if lessons_menu(win, layouts):
                 break
         except TerminalError as ex:
-            win.addstr(0, 0, str(ex), curses.A_BOLD)  # | curses.A_ITALIC)
+            win.erase()
+            win.addstr(0, 0, str(ex), curses.A_BOLD | curses.A_ITALIC)
+            win.clrtoeol()
             win.getkey()
+            win.erase()
 
 
 def load_lessons(yaml_type="safe") -> dict:
