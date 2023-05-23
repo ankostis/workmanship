@@ -13,6 +13,7 @@ converted hastily from dvorak (so gibberish grams & words).
 import curses
 import functools as fnt
 import importlib.resources as pkg_resources
+import sys
 import time
 
 from ruamel.yaml import YAML
@@ -242,4 +243,8 @@ def load_lessons(yaml_type="safe") -> dict:
 
 def main(*args):
     data = load_lessons()
-    curses.wrapper(typing_tutorial, data["layouts"])
+    try:
+        curses.wrapper(typing_tutorial, data["layouts"])
+    except KeyboardInterrupt as ex:
+        # TODO: save scores
+        print("Interrupted with [Ctrl+C], scores not saved.", file=sys.stderr)
