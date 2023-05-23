@@ -13,8 +13,11 @@ converted hastily from dvorak (so gibberish grams & words).
 import curses
 import functools as fnt
 import importlib.resources as pkg_resources
+import shutil
 import sys
 import time
+from collections import defaultdict
+from pathlib import Path
 
 from ruamel.yaml import YAML
 
@@ -23,9 +26,12 @@ from . import TerminalError, textmenus
 ESC_CHAR = chr(27)
 RET_CHAR = "↳"  # chr(0x21B3)
 
+# TODO: use `platformdirs` lib to locate user-prefs.
+prefs_fpath = Path("~/.workmanship.yml").expanduser()
 
 selected_layout = ("d", "Dvorak")
 beep_on_errors = False
+user_prefs: dict = None  # None is sentinel
 
 
 def status_bar(win, txt=None, attr=curses.A_NORMAL, offset=0):
@@ -79,7 +85,7 @@ def dump_lesson(win, lines, start_y):
         win.addstr(RET_CHAR)
 
 
-def run_typing_lesson(win, title, text) -> str:
+def run_typing_lesson(win, title, text) -> tuple:
     text = text.strip()
     assert text
     total_len = len(text)
@@ -150,7 +156,8 @@ def run_typing_lesson(win, title, text) -> str:
         dump_stats(win, total_len, start_time, hits, misses)
         win.move(y, x)
 
-    return ok
+    # FIXME: calc-stats twice on game over
+    return speed_stats(start_time, hits, misses) if ok else ()
 
 
 def toggle_beep_on_errors(_):
@@ -214,7 +221,8 @@ def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
             statusbar_args = action(title)
             status_bar(win, *statusbar_args)
         else:
-            run_typing_lesson(win, title, action)
+            game_stats = run_typing_lesson(win, title, action)
+            update_game_scores(sel, game_stats)
             win.erase()
 
 
@@ -241,6 +249,50 @@ def load_lessons(yaml_type="safe") -> dict:
         return yaml.load(f)
 
 
+def load_user_prefs(yaml_type="rt") -> dict:
+    global user_prefs
+
+    yaml = YAML(typ=yaml_type)
+    try:
+        with open(prefs_fpath, "rt") as f:
+            prefs = yaml.load(f)
+    except FileNotFoundError:
+        pass
+
+    if not prefs:
+        prefs = {}
+
+    prefs["game_scores"] = defaultdict(list, prefs.get("game_scores") or {})
+
+    user_prefs = prefs
+
+
+def store_user_prefs(yaml_type="rt") -> dict:
+    prefs = user_prefs
+    prefs["game_scores"] = dict(prefs["game_scores"])
+    yaml = YAML(typ=yaml_type)
+    try:
+        shutil.copy(prefs_fpath, prefs_fpath.with_suffix(".bak"))
+    except FileNotFoundError:
+        pass
+
+    with open(prefs_fpath, "wt") as f:
+        return yaml.dump(user_prefs, f)
+
+
+def update_game_scores(sel, stats):
+    if stats:
+        user_prefs["game_scores"][sel].append(stats)
+
+
+def have_game_scores():
+    return bool(user_prefs["game_scores"])
+
+
 def main(*args):
     data = load_lessons()
+    load_user_prefs()
     curses.wrapper(typing_tutorial, data["layouts"])
+    if have_game_scores():
+        print("Saving scores.", file=sys.stderr)
+        store_user_prefs()
