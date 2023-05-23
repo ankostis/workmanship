@@ -100,28 +100,47 @@ def run_typing_lesson(win, title, text) -> str:
     ok = False
     hits = misses = 0
     start_time = time.time()
+    pause_time = 0  # Used also as a flag if ESC has been pressed.
     dump_stats(win, start_time, total_len, hits, misses)
 
-    while (c := win.get_wch()) != ESC_CHAR:
-        row = lines[y - start_y]
-        if c == chr(curses.KEY_RESIZE):
-            pass
-        elif row[x] != c:
-            misses += 1
-            if beep_on_errors:
-                curses.beep()
+    while True:
+        c = win.get_wch()
+
+        if c == ESC_CHAR:
+            if pause_time:
+                break  # User abandoned lesson by pressing ESC x2.
+            else:
+                pause_time = time.time()
+                status_bar(
+                    win,
+                    "Press ESC to return to main menu, any other key to continue",
+                    curses.A_ITALIC,
+                    offset=1,
+                )
+        elif pause_time:  # User pressed any key after ESC
+            status_bar(win, offset=1)
+            start_time += time.time() - pause_time
+            pause_time = 0
         else:
-            hits += 1
-            if x >= 0:
-                win.chgat(y, x, 1, curses.A_NORMAL)
-            x += 1
-            if x >= len(row):
-                if y > len(lines):
-                    ok = True
-                    break
-                y += 1
-                x = 0
-            win.chgat(y, x, 1, curses.A_REVERSE)
+            row = lines[y - start_y]
+            if c == chr(curses.KEY_RESIZE):  # Does it work?
+                pass
+            elif row[x] != c:
+                misses += 1
+                if beep_on_errors:
+                    curses.beep()
+            else:
+                hits += 1
+                if x >= 0:
+                    win.chgat(y, x, 1, curses.A_NORMAL)
+                x += 1
+                if x >= len(row):
+                    if y > len(lines):
+                        ok = True
+                        break
+                    y += 1
+                    x = 0
+                win.chgat(y, x, 1, curses.A_REVERSE)
 
         dump_stats(win, total_len, start_time, hits, misses)
         win.move(y, x)
