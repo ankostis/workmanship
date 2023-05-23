@@ -145,11 +145,6 @@ def run_typing_lesson(win, title, text) -> str:
         dump_stats(win, total_len, start_time, hits, misses)
         win.move(y, x)
 
-    status_bar(win, "Press ESC to return to main menu", curses.A_ITALIC, offset=1)
-    dump_stats(win, total_len, start_time, hits, misses)
-    while (c := win.getkey()) != ESC_CHAR:
-        pass
-
     return ok
 
 
