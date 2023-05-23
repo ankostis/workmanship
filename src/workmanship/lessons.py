@@ -71,6 +71,13 @@ def dump_stats(win, total_len, start_time, hits, misses):
     status_bar(win, stats, curses.A_REVERSE)
 
 
+def dump_lesson(win, lines, start_y):
+    for y, row in enumerate(lines, start_y):
+        # FIXME: breaks if terminal height too small
+        win.addstr(y, 0, row[:-1])
+        win.addstr(RET_CHAR)
+
+
 def run_typing_lesson(win, title, text) -> str:
     text = text.strip()
     assert text
@@ -86,17 +93,14 @@ def run_typing_lesson(win, title, text) -> str:
     win.addstr(0, 0, f"{title}:", curses.A_BOLD)
 
     start_y = 2
-    for y, row in enumerate(lines, start_y):
-        # FIXME: breaks if terminal height too small
-        win.addstr(y, 0, row[:-1])
-        win.addstr(RET_CHAR)
-    x = 0
-    y = start_y
+    dump_lesson(win, lines, start_y)
 
     status_bar(win, "Press any key to start (ESC to exit)", curses.A_ITALIC)
     if (c := win.get_wch()) == ESC_CHAR:
         return
 
+    x = 0
+    y = start_y
     ok = False
     hits = misses = 0
     start_time = time.time()
