@@ -29,6 +29,12 @@ The original *dvorak* lessons were extracted with `$ strings dvorak7min`
 and were translated into *workman* layout by mapping the relocated keys between
 these 2 layouts (see `bin/convert_lessons_across_layouts.py`) - hence
 the gibberish ngrams & words in this layout.
+
+As of v0.2.0, these layouts have been defined
+
+- dvorak
+- workman
+- workman(el) - Greek letters
  
 ## History 
 
