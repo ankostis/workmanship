@@ -173,19 +173,15 @@ def select_layout(_, layout):
 
 
 def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
-    def mark_selected(k, t):
-        return f"{t!r} layout{' (selected)' if (k, t) == selected_layout else ''}"
+    def mark_selected(txt, flag):
+        return (txt, curses.A_BOLD if flag else curses.A_NORMAL)
 
     menu = textmenus.Menu(
-        (
-            "b",
-            f"Beep on errors {'(enabled)' if beep_on_errors else '(disabled)'}",
-            toggle_beep_on_errors,
-        ),
+        ("b", mark_selected(f"Beep on errors", beep_on_errors), toggle_beep_on_errors),
         *[
             (
                 key,
-                mark_selected(key, title),
+                mark_selected(f"{title!r} layout", (key, title) == selected_layout),
                 fnt.partial(select_layout, layout=(key, title)),
             )
             for key, title in layouts
@@ -194,18 +190,7 @@ def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
         layouts[selected_layout],
     )
 
-    # FIXME: use subpad to handle `maxy` overflows
-    maxy, maxx = win.getmaxyx()
-    menu_rows = menu.rows(maxx)
-    need_height = titles_y + len(menu_rows) + 2  # +2 for emptyline + statusbar
-    if need_height >= maxy:
-        raise TerminalError(
-            f"Terminal height({maxy}) too small"
-            f", must have more than x{need_height} rows or more than  x{maxx} columns."
-        )
-    for y, row in enumerate(menu_rows, start=titles_y):
-        win.addstr(y, 0, row)
-        win.clrtoeol()
+    menu.dump_rows(win, titles_y)
 
     win.addstr(
         prompt_y, 0, f"Type a lesson number or [{menu.letters}]? ", curses.A_ITALIC
