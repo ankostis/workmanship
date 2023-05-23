@@ -189,6 +189,7 @@ def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
     win.addstr(
         prompt_y, 0, f"Type a lesson number or [{menu.letters}]? ", curses.A_ITALIC
     )
+    win.clrtoeol()
     sel = win.getstr().decode("utf-8").lower()
     if not sel:
         return
@@ -205,6 +206,7 @@ def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
             status_bar(win, *statusbar_args)
         else:
             run_typing_lesson(win, title, action)
+            win.erase()
 
 
 def typing_tutorial(win, layouts):
@@ -213,7 +215,6 @@ def typing_tutorial(win, layouts):
     while True:
         curses.echo()
         curses.curs_set(2)
-        win.erase()
         try:
             if lessons_menu(win, layouts):
                 break
