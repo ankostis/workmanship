@@ -13,7 +13,6 @@ converted hastily from dvorak (so gibberish grams & words).
 import curses
 import functools as fnt
 import importlib.resources as pkg_resources
-import shutil
 import sys
 import time
 from collections import defaultdict
@@ -270,14 +269,20 @@ def load_user_prefs(yaml_type="rt") -> dict:
 def store_user_prefs(yaml_type="rt") -> dict:
     prefs = user_prefs
     prefs["game_scores"] = dict(prefs["game_scores"])
+    tmp_fpath = prefs_fpath.with_suffix(".tmp")
+
     yaml = YAML(typ=yaml_type)
+    with open(tmp_fpath, "wt") as f:
+        yaml.dump(user_prefs, f)
+
     try:
-        shutil.copy(prefs_fpath, prefs_fpath.with_suffix(".bak"))
+        prefs_fpath.rename(prefs_fpath.with_suffix(".bak.yml"))
     except FileNotFoundError:
         pass
-
-    with open(prefs_fpath, "wt") as f:
-        return yaml.dump(user_prefs, f)
+    try:
+        tmp_fpath.rename(prefs_fpath)
+    except FileNotFoundError:
+        pass
 
 
 def update_game_scores(sel, stats):
