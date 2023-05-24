@@ -23,6 +23,7 @@ from ruamel.yaml import YAML
 from . import TerminalError, textmenus
 
 ESC_CHAR = chr(27)
+BREAK_CHAR = chr(3)
 RET_CHAR = "↳"  # chr(0x21B3)
 
 # TODO: use `platformdirs` lib to locate user-prefs.
@@ -211,6 +212,8 @@ def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
 
     if sel == "q" or all(i == ESC_CHAR for i in sel):
         return True
+    if all(i == BREAK_CHAR for i in sel):
+        raise SystemExit("Ctrl+C, exit without saving prefs (and scores)")
 
     if sel not in menu:
         status_bar(win, f"Invalid selection: {sel}", curses.A_BOLD)
