@@ -141,9 +141,11 @@ def run_typing_lesson(win, title, text) -> tuple:
     if dump_lesson(win, lines, start_y):
         return  # ESC pressed
 
+    # TODO: convoluted states, refactor!
     status_bar(win, "Press any key to start (ESC to exit)", curses.A_ITALIC)
-    if (c := win.get_wch()) == ESC_CHAR:
-        return
+    while (c := win.get_wch()) == curses.KEY_RESIZE:
+        if c == ESC_CHAR:
+            return
 
     x = 0
     y = start_y
