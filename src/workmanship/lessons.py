@@ -103,9 +103,9 @@ def dump_lesson(win, lines, start_y):
 def run_typing_lesson(win, title, text) -> tuple:
     text = text.strip()
     assert text
-    nchars_to_type = len(text)
 
     lines = [f"{l.strip()}\n" for l in text.splitlines()]
+    nchars_to_type = sum([len(l) for l in lines])
 
     win.erase()
     curses.noecho()
