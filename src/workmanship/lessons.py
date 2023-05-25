@@ -232,7 +232,7 @@ def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
     if not sel or not isinstance(sel, bytes):
         return
 
-    sel = sel.decode("utf-8").lower()
+    sel = sel.decode("utf-8", errors="replace").lower()
 
     if sel == "q" or all(i == ESC_CHAR for i in sel):
         return True
