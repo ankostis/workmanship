@@ -31,6 +31,7 @@ RET_CHAR = "↳"  # chr(0x21B3)
 prefs_fpath = Path("~/.workmanship.yml").expanduser()
 user_prefs: dict = None  # None is sentinel
 
+user_scores = defaultdict(list)
 selected_layout = ("d", "Dvorak")
 beep_on_errors = False
 
@@ -122,7 +123,6 @@ def run_typing_lesson(win, title, text) -> tuple:
 
     x = 0
     y = start_y
-    ok = False
     hits = misses = 0
     start_time = time.time()
     pause_time = 0  # Used also as a flag if ESC has been pressed.
@@ -131,7 +131,6 @@ def run_typing_lesson(win, title, text) -> tuple:
     while True:
         c = win.get_wch()
         if y >= start_y + len(lines):
-            ok = True
             return stats
 
         if c == ESC_CHAR:
@@ -290,7 +289,7 @@ def load_user_prefs(avail_layouts) -> dict:
     if not prefs:
         prefs = {}
 
-    # TODO: use custocm YAML loader to convert yaml <-> prefs
+    # TODO: use custocm YAML loader to convert yaml <-> prefs & validators
     prefs["game_scores"] = defaultdict(list, prefs.get("game_scores") or {})
     beep_on_errors = prefs.get("beep_on_errors", False)
     layout = prefs.get("selected_layout")
@@ -307,6 +306,9 @@ def store_user_prefs(yaml_type="rt") -> dict:
 
     prefs["beep_on_errors"] = beep_on_errors
     prefs["selected_layout"] = selected_layout
+    stored_scores = prefs["game_scores"]
+    for sel, scores in user_scores.items():
+        stored_scores[sel].extend(scores)
     prefs["game_scores"] = dict(prefs["game_scores"])
 
     tmp_fpath = prefs_fpath.with_suffix(".tmp")
@@ -335,11 +337,11 @@ def store_user_prefs_cb(_):
 
 def update_game_scores(sel, stats: Stats | None):
     if stats:
-        user_prefs["game_scores"][sel].append(stats._asdict())
+        user_scores[sel].append(stats._asdict())
 
 
-def have_game_scores():
-    return bool(user_prefs["game_scores"])
+def game_scores_count():
+    return len(user_scores)
 
 
 def main(*args):
@@ -349,8 +351,10 @@ def main(*args):
     try:
         curses.wrapper(typing_tutorial, layouts)
     except KeyboardInterrupt:
-        if have_game_scores():
-            raise SystemExit("Ctrl+C, exit without saving prefs")
+        raise SystemExit(
+            f"Ctrl+C, exit without saving x{game_scores_count()} new scores in prefs"
+        )
     else:
-        if have_game_scores():
-            store_user_prefs()
+        print(f"Save x{game_scores_count()} new scores in prefs"
+        , file=sys.stderr)
+        store_user_prefs()
