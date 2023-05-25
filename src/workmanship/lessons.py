@@ -238,7 +238,8 @@ def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
     if sel == "q" or all(i == ESC_CHAR for i in sel):
         return True
     if all(i == BREAK_CHAR for i in sel):
-        raise SystemExit("Ctrl+C, exit without saving prefs (and scores)")
+        # Emulate Ctrl+C.
+        raise KeyboardInterrupt()
 
     if sel not in menu:
         status_bar(win, f"Invalid selection: {sel}", curses.A_BOLD)
@@ -345,6 +346,11 @@ def main(*args):
     data = load_lessons()
     layouts = data["layouts"]
     load_user_prefs(layouts)
-    curses.wrapper(typing_tutorial, layouts)
-    if have_game_scores():
-        store_user_prefs()
+    try:
+        curses.wrapper(typing_tutorial, layouts)
+    except KeyboardInterrupt:
+        if have_game_scores():
+            raise SystemExit("Ctrl+C, exit without saving prefs")
+    else:
+        if have_game_scores():
+            store_user_prefs()
