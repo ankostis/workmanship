@@ -29,10 +29,10 @@ RET_CHAR = "↳"  # chr(0x21B3)
 
 # TODO: use `platformdirs` lib to locate user-prefs.
 prefs_fpath = Path("~/.workmanship.yml").expanduser()
+user_prefs: dict = None  # None is sentinel
 
 selected_layout = ("d", "Dvorak")
 beep_on_errors = False
-user_prefs: dict = None  # None is sentinel
 
 
 def status_bar(win, txt=None, attr=curses.A_NORMAL, offset=0):
@@ -276,10 +276,10 @@ def load_lessons(yaml_type="safe") -> dict:
         return yaml.load(f)
 
 
-def load_user_prefs(yaml_type="rt") -> dict:
-    global user_prefs
+def load_user_prefs(avail_layouts) -> dict:
+    global user_prefs, beep_on_errors, selected_layout
 
-    yaml = YAML(typ=yaml_type)
+    yaml = YAML(typ="rt")
     try:
         with open(prefs_fpath, "rt") as f:
             prefs = yaml.load(f)
@@ -289,14 +289,25 @@ def load_user_prefs(yaml_type="rt") -> dict:
     if not prefs:
         prefs = {}
 
+    # TODO: use custocm YAML loader to convert yaml <-> prefs
     prefs["game_scores"] = defaultdict(list, prefs.get("game_scores") or {})
+    beep_on_errors = prefs.get("beep_on_errors", False)
+    layout = prefs.get("selected_layout")
+    if layout:
+        layout = tuple(layout)
+        if layout in avail_layouts:
+            selected_layout = layout
 
     user_prefs = prefs
 
 
 def store_user_prefs(yaml_type="rt") -> dict:
     prefs = user_prefs
+
+    prefs["beep_on_errors"] = beep_on_errors
+    prefs["selected_layout"] = selected_layout
     prefs["game_scores"] = dict(prefs["game_scores"])
+
     tmp_fpath = prefs_fpath.with_suffix(".tmp")
 
     yaml = YAML(typ=yaml_type)
@@ -332,7 +343,8 @@ def have_game_scores():
 
 def main(*args):
     data = load_lessons()
-    load_user_prefs()
-    curses.wrapper(typing_tutorial, data["layouts"])
+    layouts = data["layouts"]
+    load_user_prefs(layouts)
+    curses.wrapper(typing_tutorial, layouts)
     if have_game_scores():
         store_user_prefs()
