@@ -31,7 +31,7 @@ RET_CHAR = "↳"  # chr(0x21B3)
 prefs_fpath = Path("~/.workmanship.yml").expanduser()
 user_prefs: dict = None  # None is sentinel
 
-user_scores = defaultdict(list)
+user_nscores = 0
 selected_layout = ("d", "Dvorak")
 beep_on_errors = False
 
@@ -301,19 +301,18 @@ def load_user_prefs(avail_layouts) -> dict:
     user_prefs = prefs
 
 
-def store_user_prefs(yaml_type="rt") -> dict:
+def store_user_prefs() -> str:
+    global user_nscores
+
     prefs = user_prefs
 
     prefs["beep_on_errors"] = beep_on_errors
     prefs["selected_layout"] = selected_layout
-    stored_scores = prefs["game_scores"]
-    for sel, scores in user_scores.items():
-        stored_scores[sel].extend(scores)
     prefs["game_scores"] = dict(prefs["game_scores"])
 
     tmp_fpath = prefs_fpath.with_suffix(".tmp")
 
-    yaml = YAML(typ=yaml_type)
+    yaml = YAML(typ="rt")
     with open(tmp_fpath, "wt") as f:
         yaml.dump(user_prefs, f)
 
@@ -326,35 +325,33 @@ def store_user_prefs(yaml_type="rt") -> dict:
     except FileNotFoundError:
         pass
 
+    msg = f"Stored x{user_nscores} new scores in '{prefs_fpath}'"
+    user_nscores = 0
+
+    return msg
+
 
 def store_user_prefs_cb(_):
-    store_user_prefs()
-    return (
-        f"User preferences stored in '{prefs_fpath}'.",
-        curses.A_ITALIC,
-    )
+    return (store_user_prefs(), curses.A_ITALIC)
 
 
 def update_game_scores(sel, stats: Stats | None):
+    global user_nscores
+
     if stats:
-        user_scores[sel].append(stats._asdict())
-
-
-def game_scores_count():
-    return len(user_scores)
+        user_prefs["game_scores"][sel].append(stats._asdict())
+        user_nscores += 1
 
 
 def main(*args):
+    # TODO: parse CLI args
     data = load_lessons()
     layouts = data["layouts"]
     load_user_prefs(layouts)
     try:
         curses.wrapper(typing_tutorial, layouts)
+        print(store_user_prefs(), file=sys.stderr)
     except KeyboardInterrupt:
         raise SystemExit(
-            f"Ctrl+C, exit without saving x{game_scores_count()} new scores in prefs"
+            f"Ctrl+C, exit without saving x{user_nscores} new scores in prefs"
         )
-    else:
-        print(f"Save x{game_scores_count()} new scores in prefs"
-        , file=sys.stderr)
-        store_user_prefs()
