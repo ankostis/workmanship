@@ -95,6 +95,29 @@ def dump_stats(win, start_time, hits, misses, nchars_to_type):
 
 
 def dump_lesson(win, lines, start_y):
+    win.erase()
+
+    ## Check if terminal is big enough to display the lesson.
+    #
+    while True:
+        need_height = start_y + len(lines)
+        need_width = len([len(l) for l in lines])
+        maxy, maxx = win.getmaxyx()
+        if need_height >= maxy:  # or need_width >= maxx:
+            win.addstr(
+                0,
+                0,
+                f"Terminal {maxy}x{maxx} (rows x cols) is too small"
+                f", must be bigger than {need_height}x{need_width}.",
+                curses.A_BOLD | curses.A_ITALIC,
+            )
+            win.clrtoeol()
+            if win.getkey() == ESC_CHAR:
+                return True
+
+        else:
+            break
+
     for y, row in enumerate(lines, start_y):
         # FIXME: breaks if terminal height too small
         win.addstr(y, 0, row[:-1])
@@ -115,7 +138,8 @@ def run_typing_lesson(win, title, text) -> tuple:
     win.addstr(0, 0, f"{title}:", curses.A_BOLD)
 
     start_y = 2
-    dump_lesson(win, lines, start_y)
+    if dump_lesson(win, lines, start_y):
+        return  # ESC pressed
 
     status_bar(win, "Press any key to start (ESC to exit)", curses.A_ITALIC)
     if (c := win.get_wch()) == ESC_CHAR:
@@ -132,6 +156,11 @@ def run_typing_lesson(win, title, text) -> tuple:
         c = win.get_wch()
         if y >= start_y + len(lines):
             return stats
+
+        if c == curses.KEY_RESIZE:
+            if dump_lesson(win, lines, start_y):
+                break  # ESC pressed
+            win.chgat(y, x, 1, curses.A_REVERSE)
 
         if c == ESC_CHAR:
             if pause_time:
