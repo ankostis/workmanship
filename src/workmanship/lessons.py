@@ -146,10 +146,10 @@ def run_typing_lesson(win, title, text) -> tuple:
                     win.chgat(y, x, 1, curses.A_NORMAL)
                 x += 1
                 if x >= len(row):
-                    if y > len(lines):
+                    y += 1
+                    if y >= start_y + len(lines):
                         ok = True
                         break
-                    y += 1
                     x = 0
                 win.chgat(y, x, 1, curses.A_REVERSE)
 
