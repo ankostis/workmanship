@@ -214,6 +214,7 @@ def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
             )
             for key, title in layouts
         ],
+        (("s", "store prefs + scores"), store_user_prefs_cb),
         (("q", "Quit"), None),
         layouts[selected_layout],
     )
@@ -241,7 +242,7 @@ def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
         title, action = menu[sel]
         if callable(action):
             statusbar_args = action(title)
-            status_bar(win, *statusbar_args)
+            status_bar(win, *(statusbar_args or ()))
         else:
             game_stats = run_typing_lesson(win, title, action)
             update_game_scores(sel, game_stats)
@@ -308,6 +309,11 @@ def store_user_prefs(yaml_type="rt") -> dict:
         pass
 
 
+def store_user_prefs_cb(_):
+    store_user_prefs()
+    print("Saved prefs.", file=sys.stderr)
+
+
 def update_game_scores(sel, stats: Stats | None):
     if stats:
         user_prefs["game_scores"][sel].append(stats._asdict())
@@ -322,5 +328,4 @@ def main(*args):
     load_user_prefs()
     curses.wrapper(typing_tutorial, data["layouts"])
     if have_game_scores():
-        print("Saving scores.", file=sys.stderr)
         store_user_prefs()
