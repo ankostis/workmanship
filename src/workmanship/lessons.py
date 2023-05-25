@@ -178,7 +178,7 @@ def run_typing_lesson(win, title, text) -> tuple:
         win.move(y, x)
 
 
-def toggle_beep_on_errors(_):
+def toggle_beep_on_errors_cb(_):
     global beep_on_errors
 
     beep_on_errors = not beep_on_errors
@@ -188,7 +188,7 @@ def toggle_beep_on_errors(_):
     )
 
 
-def select_layout(_, layout):
+def select_layout_cb(_, layout):
     global selected_layout
 
     old_layout = selected_layout
@@ -205,12 +205,16 @@ def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
         return (txt, curses.A_BOLD if flag else curses.A_NORMAL)
 
     menu = textmenus.Menu(
-        ("b", mark_selected(f"Beep on errors", beep_on_errors), toggle_beep_on_errors),
+        (
+            "b",
+            mark_selected(f"Beep on errors", beep_on_errors),
+            toggle_beep_on_errors_cb,
+        ),
         *[
             (
                 key,
                 mark_selected(f"{title!r} layout", (key, title) == selected_layout),
-                fnt.partial(select_layout, layout=(key, title)),
+                fnt.partial(select_layout_cb, layout=(key, title)),
             )
             for key, title in layouts
         ],
@@ -311,7 +315,10 @@ def store_user_prefs(yaml_type="rt") -> dict:
 
 def store_user_prefs_cb(_):
     store_user_prefs()
-    print("Saved prefs.", file=sys.stderr)
+    return (
+        f"User preferences stored in '{prefs_fpath}'.",
+        curses.A_ITALIC,
+    )
 
 
 def update_game_scores(sel, stats: Stats | None):
