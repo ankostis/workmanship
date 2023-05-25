@@ -17,6 +17,7 @@ import sys
 import time
 from collections import defaultdict
 from pathlib import Path
+from typing import NamedTuple
 
 from ruamel.yaml import YAML
 
@@ -49,33 +50,47 @@ def cps2wpm(cps):
     return cps / 5.0 * 60
 
 
+class Stats(NamedTuple):
+    cps: float
+    wpm: float
+    hits_ratio: float
+    elapsed: float
+    hits: int
+    misses: int
+
+
 def speed_stats(start_time, hits, misses):
     chars_typed = hits + misses
     if not chars_typed:
-        return 0, 0, 0, 0
+        return Stats(0, 0, 0, 0, 0, 0)
 
     elapsed = time.time() - start_time
     cps = hits / elapsed
     wpm = cps2wpm(cps)
     hits_ratio = hits / (hits + misses)
-    return cps, wpm, hits_ratio, elapsed
+
+    return Stats(cps, wpm, hits_ratio, elapsed, hits, misses)
 
 
-def speed_stats_msg(win, total_len, start_time, hits, misses):
-    cps, wpm, hits_ratio, elapsed = speed_stats(start_time, hits, misses)
-    stats = (
+def speed_stats_msg(stats, nchars_to_type):
+    cps, wpm, hits_ratio, elapsed, hits, misses = stats
+    msg = (
         f"CPS {cps:.2f} WPM {wpm:.2f}"
         f" Hits: {100*hits_ratio:.2f}%"
         f" Misses: {misses}({100*(1-hits_ratio):.2f}%)"
-        f" Typed {hits} of {total_len}({100 * hits / total_len:.2f})"
+        f" Completed {hits} of {nchars_to_type}({100 * hits / nchars_to_type:.1f}%)"
         f" Elapsed: {elapsed:.0f}sec"
     )
+
+    return msg
+
+
+def dump_stats(win, start_time, hits, misses, nchars_to_type):
+    stats = speed_stats(start_time, hits, misses)
+    msg = speed_stats_msg(stats, nchars_to_type)
+    status_bar(win, msg, curses.A_REVERSE)
+
     return stats
-
-
-def dump_stats(win, total_len, start_time, hits, misses):
-    stats = speed_stats_msg(win, total_len, start_time, hits, misses)
-    status_bar(win, stats, curses.A_REVERSE)
 
 
 def dump_lesson(win, lines, start_y):
@@ -88,10 +103,9 @@ def dump_lesson(win, lines, start_y):
 def run_typing_lesson(win, title, text) -> tuple:
     text = text.strip()
     assert text
-    total_len = len(text)
+    nchars_to_type = len(text)
 
-    lines = text.strip().splitlines()
-    lines = [f"{l}\n" for l in lines]
+    lines = [f"{l.strip()}\n" for l in text.splitlines()]
 
     win.erase()
     curses.noecho()
@@ -112,10 +126,13 @@ def run_typing_lesson(win, title, text) -> tuple:
     hits = misses = 0
     start_time = time.time()
     pause_time = 0  # Used also as a flag if ESC has been pressed.
-    dump_stats(win, start_time, total_len, hits, misses)
+    stats = dump_stats(win, start_time, hits, misses, nchars_to_type)
 
     while True:
         c = win.get_wch()
+        if y >= start_y + len(lines):
+            ok = True
+            return stats
 
         if c == ESC_CHAR:
             if pause_time:
@@ -147,17 +164,18 @@ def run_typing_lesson(win, title, text) -> tuple:
                 x += 1
                 if x >= len(row):
                     y += 1
-                    if y >= start_y + len(lines):
-                        ok = True
-                        break
                     x = 0
+                    if y >= start_y + len(lines):
+                        status_bar(
+                            win,
+                            "Press any key to return to main menu",
+                            curses.A_ITALIC,
+                            offset=1,
+                        )
                 win.chgat(y, x, 1, curses.A_REVERSE)
 
-        dump_stats(win, total_len, start_time, hits, misses)
+        stats = dump_stats(win, start_time, hits, misses, nchars_to_type)
         win.move(y, x)
-
-    # FIXME: calc-stats twice on game over
-    return speed_stats(start_time, hits, misses) if ok else ()
 
 
 def toggle_beep_on_errors(_):
@@ -181,6 +199,8 @@ def select_layout(_, layout):
 
 
 def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
+    """Return true for parent loop to exit, false to continue."""
+
     def mark_selected(txt, flag):
         return (txt, curses.A_BOLD if flag else curses.A_NORMAL)
 
@@ -288,9 +308,9 @@ def store_user_prefs(yaml_type="rt") -> dict:
         pass
 
 
-def update_game_scores(sel, stats):
+def update_game_scores(sel, stats: Stats | None):
     if stats:
-        user_prefs["game_scores"][sel].append(stats)
+        user_prefs["game_scores"][sel].append(stats._asdict())
 
 
 def have_game_scores():
