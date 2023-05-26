@@ -42,11 +42,15 @@ Data and idea based on [dvorak7min](https://github.com/yaychris/dvorak7min)
 by Dan Wood <danwood@karelia.com>, available in the [original html format](http://www.karelia.com/abcd/).
 
 What started as a search for a personal training tutorial on *workman* layout,
-ended up as a python-curses experiment for multiple layouts.
+ended up as a python *curses* excersize for multiple layouts with score statistics.
 
-## Similar apps
+But it is, and will remain, an excersize in futility,
+given the plethora of online typing tutors and games.
+
+## Similar apps and sites
 
 - Blogpost for [a tkinter tutor](https://hackernoon.com/make-your-own-typing-tutor-app-using-python-6i19734se).
 - Excellent site for [training at various layouts & styles](https://www.keybr.com/).
 - A [site with speed-tests](https://thetypingcat.com/typing-speed-test) for all layouts.
+- [typing.io](https://typing.io/): code snippets for various languages.
 - ...too many to count (but very few for *workman* layout).
