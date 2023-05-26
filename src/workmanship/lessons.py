@@ -11,6 +11,7 @@ converted hastily from dvorak (so gibberish grams & words).
 
 """
 import curses
+import datetime
 import functools as fnt
 import importlib.resources as pkg_resources
 import sys
@@ -370,7 +371,9 @@ def update_game_scores(sel, stats: Stats | None):
     global user_nscores
 
     if stats:
-        user_prefs["game_scores"][sel].append(stats._asdict())
+        user_prefs["game_scores"][sel].append(
+            {"date": datetime.datetime.now(), **stats._asdict()}
+        )
         user_nscores += 1
 
 
