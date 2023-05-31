@@ -35,7 +35,9 @@ def translate_lessons(trans: dict, lessons: dict) -> dict:
     def trans_title(t):
         m = re.match("^(.+): (.+)$", t)
         if m:
-            return type(t)(f"{m.group(1).translate(trans)}: {m.group(2)}")
+            return type(t)(
+                f"{m.group(1).lower().translate(trans).upper()}: {m.group(2)}"
+            )
         return t
 
     def trans_words(w):
