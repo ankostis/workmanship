@@ -50,7 +50,7 @@ def make_chars_trans_table(inp_layout: str, out_layout: str) -> dict:
     inp_chars = trans_chars[inp_layout]
     out_chars = trans_chars[out_layout]
     for a, b in zip(inp_chars, out_chars, strict=True):
-        assert len(a) == len(b), (a, b, len(a), len(b))
+        assert len(a) == len(b), (inp_layout, out_layout, a, b, len(a), len(b))
 
     return str.maketrans("".join(inp_chars), "".join(out_chars))
 
