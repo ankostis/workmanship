@@ -55,11 +55,11 @@ def make_chars_trans_table(inp_layout: str, out_layout: str) -> dict:
     return str.maketrans("".join(inp_chars), "".join(out_chars))
 
 
-def convert_layouts(lessons, conversions: dict[str, str], out_fpath) -> dict:
+def convert_layouts(lessons, conversions: list[tuple[str, str]], out_fpath) -> dict:
     lessons = ls.load_lessons(yaml_type="rt")
     layouts = lessons["layouts"]
 
-    for inp_layout, out_layout in conversions.items():
+    for inp_layout, out_layout in conversions:
         trans = make_chars_trans_table(inp_layout, out_layout)
         new_layout = translate_lessons(trans, layouts[inp_layout])
         layouts[out_layout] = new_layout
@@ -70,8 +70,8 @@ def convert_layouts(lessons, conversions: dict[str, str], out_fpath) -> dict:
 
 
 if __name__ == "__main__":
-    conversions = {
-        ("d", "dvorak"): ("w", "workman"),
-        ("d", "dvorak"): ("wel", "workman_EL"),
-    }
+    conversions = [
+        (("d", "Dvorak"), ("w", "Workman")),
+        (("d", "Dvorak"), ("wel", "Workman_EL")),
+    ]
     convert_layouts(None, conversions, "lessons.yml")
