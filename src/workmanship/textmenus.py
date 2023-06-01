@@ -138,10 +138,6 @@ class Menu(UserDict[str, tuple[str, Any]]):  # {key: (title, value)}
         self.data[key] = ((title, style), value)
 
     @property
-    def letters(self):
-        return "".join([k for k in self.data if not re.match(r"^\d+$", k)])
-
-    @property
     def labels(self) -> list[tuple[str, int]]:
         return [
             (f"{key} - {title}", style)

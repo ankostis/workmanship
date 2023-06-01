@@ -256,9 +256,7 @@ def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
 
     menu.dump_rows(win, titles_y)
 
-    win.addstr(
-        prompt_y, 0, f"Type a lesson number or [{menu.letters}]? ", curses.A_ITALIC
-    )
+    win.addstr(prompt_y, 0, f"Type a lesson number/selection? ", curses.A_ITALIC)
     win.clrtoeol()
     sel = win.getstr()
     if not sel or not isinstance(sel, bytes):
