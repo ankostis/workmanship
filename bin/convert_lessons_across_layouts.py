@@ -10,43 +10,43 @@ from ruamel.yaml import YAML
 from workmanship import lessons as ls
 
 trans_chars = {
-    ("d", "Dvorak"): [
+    "Dvorak": [
         "7&8*9(0)[{]}",
         "'\",<.>pPyYfFgGcCrRlL/?=+",
         "aAoOeEuUiIdDhHtTnNsS-_",
         ";:qQjJkKxXbBmMwWvVzZ",
     ],
-    ("w", "Workman"): [
+    "Workman": [
         "7&8*9(0)-_=+",
         "qQdDrRwWbBjJfFuUpP;:[{]}",
         "aAsShHtTgGyYnNeEoOiI'\"",
         "zZxXmMcCvVkKlL,<.>/?",
     ],
-    ("wel", "Workman_EL"): [
+    "Workman(EL)": [
         "7&8*9(0)-_=+",
         ";:δΔρΡςΣβΒξΞφΦθΘπΠ;:[{]}",
         "αΑσΣηΗτΤγΓυΥνΝεΕοΟιΙ'\"",
         "ζΖχΧμΜψΨωΩκΚλΛ,<.>/?",
     ],
-    ("cdh", "ColemakDH(ISO)"): [
+    "ColemakDH(ISO)": [
         "-_7&8*9(0)=+",
         "qQwWfFpPbBjJlLuUyY;:[{]}",
         "aArRsStTgGmMnNeEiIoO'\"",
         "zZxXcCdDvVkKhH,<.>/?",
     ],
-    ("cdhel", "ColemakDH(ISO,EL)"): [
+    "ColemakDH(ISO,EL)": [
         "-_7&8*9(0)=+",
         ";:ςΣφΦπΠβΒξΞλΛθΘυΥ;:[{]}",
         "αΑρΡσΣτΤγΓμΜνΝεΕιΙοΟ'\"",
         "ζΖχΧψΨδΔωΩκΚηΗ,<.>/?",
     ],
-    ("cdha", "ColemakDH(ANSI)"): [
+    "ColemakDH(ANSI)": [
         "-_7&8*9(0)=+",
         "qQwWfFpPbBjJlLuUyY;:[{]}",
         "aArRsStTgGmMnNeEiIoO'\"",
         "xXcCdDvVzZkKhH,<.>/?",
     ],
-    ("cdhael", "ColemakDH(ANSI,EL)"): [
+    "ColemakDH(ANSI,EL)": [
         "-_7&8*9(0)=+",
         ";:ςΣφΦπΠβΒξΞλΛθΘυΥ;:[{]}",
         "αΑρΡσΣτΤγΓμΜνΝεΕιΙοΟ'\"",
@@ -79,27 +79,30 @@ def make_chars_trans_table(inp_layout: str, out_layout: str) -> dict:
     return str.maketrans("".join(inp_chars), "".join(out_chars))
 
 
-def convert_layouts(lessons, conversions: list[tuple[str, str]], out_fpath) -> dict:
-    lessons = ls.load_lessons(yaml_type="rt")
-    layouts = lessons["layouts"]
+def convert_layouts(conversions: list[tuple[str, str]], out_fpath) -> dict:
+    data = ls.load_lessons(yaml_type="rt")
+    layouts = data["layouts"]
 
-    for inp_layout, out_layout in conversions:
+    for inp_layout, (out_layout, out_key) in conversions:
         trans = make_chars_trans_table(inp_layout, out_layout)
-        new_layout = translate_lessons(trans, layouts[inp_layout])
-        layouts[out_layout] = new_layout
+        lessons = translate_lessons(trans, layouts[inp_layout]["lessons"])
+        layouts[out_layout] = {
+            "key": out_key,
+            "lessons": lessons,
+        }
 
     yaml = YAML()  # default, if not specfied, is 'rt' (round-trip)
     with open(out_fpath, "wt") as f:
-        yaml.dump(lessons, f)
+        yaml.dump(data, f)
 
 
 if __name__ == "__main__":
     conversions = [
-        (("d", "Dvorak"), ("w", "Workman")),
-        (("d", "Dvorak"), ("wel", "Workman_EL")),
-        (("d", "Dvorak"), ("cdh", "ColemakDH(ISO)")),
-        (("d", "Dvorak"), ("cdhel", "ColemakDH(ISO,EL)")),
-        (("d", "Dvorak"), ("cdha", "ColemakDH(ANSI)")),
-        (("d", "Dvorak"), ("cdhael", "ColemakDH(ANSI,EL)")),
+        ("Dvorak", ("Workman", "w")),
+        ("Dvorak", ("Workman(EL)", "ς")),
+        ("Dvorak", ("ColemakDH(ISO)", "cdh")),
+        ("Dvorak", ("ColemakDH(ISO,EL)", "ψδη")),
+        ("Dvorak", ("ColemakDH(ANSI)", "cdha")),
+        ("Dvorak", ("ColemakDH(ANSI,EL)", "ψδηα")),
     ]
-    convert_layouts(None, conversions, "lessons.yml")
+    convert_layouts(conversions, "lessons.yml")

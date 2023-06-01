@@ -33,7 +33,7 @@ prefs_fpath = Path("~/.workmanship.yml").expanduser()
 user_prefs: dict = None  # None is sentinel
 
 user_nscores = 0
-selected_layout = ("d", "Dvorak")
+selected_layout = "Dvorak"
 beep_on_errors = False
 
 
@@ -243,15 +243,15 @@ def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
         ),
         *[
             (
-                key,
-                mark_selected(f"{title!r} layout", (key, title) == selected_layout),
-                fnt.partial(select_layout_cb, layout=(key, title)),
+                layout["key"],
+                mark_selected(f"{title!r} layout", title == selected_layout),
+                fnt.partial(select_layout_cb, layout=title),
             )
-            for key, title in layouts
+            for title, layout in layouts.items()
         ],
         (("s", "store prefs + scores"), store_user_prefs_cb),
         (("q", "Quit"), None),
-        layouts[selected_layout],
+        layouts[selected_layout]["lessons"],
     )
 
     menu.dump_rows(win, titles_y)
@@ -325,10 +325,8 @@ def load_user_prefs(avail_layouts) -> dict:
     prefs["game_scores"] = defaultdict(list, prefs.get("game_scores") or {})
     beep_on_errors = prefs.get("beep_on_errors", False)
     layout = prefs.get("selected_layout")
-    if layout:
-        layout = tuple(layout)
-        if layout in avail_layouts:
-            selected_layout = layout
+    if layout in avail_layouts:
+        selected_layout = layout
 
     user_prefs = prefs
 
