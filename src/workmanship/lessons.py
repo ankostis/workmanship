@@ -95,7 +95,7 @@ def dump_stats(win, start_time, hits, misses, nchars_to_type):
     return stats
 
 
-def dump_lesson(win, lines, start_y):
+def dump_lesson(win, title, lines, start_y):
     win.erase()
 
     ## Check if terminal is big enough to display the lesson.
@@ -119,6 +119,8 @@ def dump_lesson(win, lines, start_y):
         else:
             break
 
+    win.addstr(0, 0, f"{title}:", curses.A_BOLD)
+
     for y, row in enumerate(lines, start_y):
         # FIXME: breaks if terminal height too small
         win.addstr(y, 0, row[:-1])
@@ -136,10 +138,8 @@ def run_typing_lesson(win, title, text) -> tuple:
     curses.noecho()
     curses.curs_set(False)
 
-    win.addstr(0, 0, f"{title}:", curses.A_BOLD)
-
     start_y = 2
-    if dump_lesson(win, lines, start_y):
+    if dump_lesson(win, title, lines, start_y):
         return  # ESC pressed
 
     # TODO: convoluted states, refactor!
