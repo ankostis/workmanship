@@ -10,24 +10,48 @@ from ruamel.yaml import YAML
 from workmanship import lessons as ls
 
 trans_chars = {
-    ("d", "dvorak"): (
-        "[{]}",
+    ("d", "Dvorak"): [
+        "7&8*9(0)[{]}",
         "'\",<.>pPyYfFgGcCrRlL/?=+",
         "aAoOeEuUiIdDhHtTnNsS-_",
         ";:qQjJkKxXbBmMwWvVzZ",
-    ),
-    ("w", "workman"): (
-        "-_=+",
+    ],
+    ("w", "Workman"): [
+        "7&8*9(0)-_=+",
         "qQdDrRwWbBjJfFuUpP;:[{]}",
         "aAsShHtTgGyYnNeEoOiI'\"",
         "zZxXmMcCvVkKlL,<.>/?",
-    ),
-    ("wel", "workman_EL"): (
-        "-_=+",
+    ],
+    ("wel", "Workman_EL"): [
+        "7&8*9(0)-_=+",
         ";:δΔρΡςΣβΒξΞφΦθΘπΠ;:[{]}",
         "αΑσΣηΗτΤγΓυΥνΝεΕοΟιΙ'\"",
         "ζΖχΧμΜψΨωΩκΚλΛ,<.>/?",
-    ),
+    ],
+    ("cdh", "ColemakDH(ISO)"): [
+        "-_7&8*9(0)=+",
+        "qQwWfFpPbBjJlLuUyY;:[{]}",
+        "aArRsStTgGmMnNeEiIoO'\"",
+        "zZxXcCdDvVkKhH,<.>/?",
+    ],
+    ("cdhel", "ColemakDH(ISO,EL)"): [
+        "-_7&8*9(0)=+",
+        ";:ςΣφΦπΠβΒξΞλΛθΘυΥ;:[{]}",
+        "αΑρΡσΣτΤγΓμΜνΝεΕιΙοΟ'\"",
+        "ζΖχΧψΨδΔωΩκΚηΗ,<.>/?",
+    ],
+    ("cdha", "ColemakDH(ANSI)"): [
+        "-_7&8*9(0)=+",
+        "qQwWfFpPbBjJlLuUyY;:[{]}",
+        "aArRsStTgGmMnNeEiIoO'\"",
+        "xXcCdDvVzZkKhH,<.>/?",
+    ],
+    ("cdhael", "ColemakDH(ANSI,EL)"): [
+        "-_7&8*9(0)=+",
+        ";:ςΣφΦπΠβΒξΞλΛθΘυΥ;:[{]}",
+        "αΑρΡσΣτΤγΓμΜνΝεΕιΙοΟ'\"",
+        "χΧψΨδΔωΩζΖκΚηΗ,<.>/?",
+    ],
 }
 
 
@@ -73,5 +97,9 @@ if __name__ == "__main__":
     conversions = [
         (("d", "Dvorak"), ("w", "Workman")),
         (("d", "Dvorak"), ("wel", "Workman_EL")),
+        (("d", "Dvorak"), ("cdh", "ColemakDH(ISO)")),
+        (("d", "Dvorak"), ("cdhel", "ColemakDH(ISO,EL)")),
+        (("d", "Dvorak"), ("cdha", "ColemakDH(ANSI)")),
+        (("d", "Dvorak"), ("cdhael", "ColemakDH(ANSI,EL)")),
     ]
     convert_layouts(None, conversions, "lessons.yml")
