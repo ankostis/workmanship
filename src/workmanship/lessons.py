@@ -336,7 +336,7 @@ def load_user_prefs(avail_layouts) -> dict:
 def store_user_prefs() -> str:
     global user_nscores
 
-    prefs = user_prefs
+    prefs = user_prefs.copy()
 
     prefs["beep_on_errors"] = beep_on_errors
     prefs["selected_layout"] = selected_layout
@@ -346,7 +346,7 @@ def store_user_prefs() -> str:
 
     yaml = YAML(typ="rt")
     with open(tmp_fpath, "wt") as f:
-        yaml.dump(user_prefs, f)
+        yaml.dump(prefs, f)
 
     try:
         prefs_fpath.rename(prefs_fpath.with_suffix(".bak.yml"))
