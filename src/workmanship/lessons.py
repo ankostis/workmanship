@@ -234,9 +234,15 @@ def select_layout_cb(layout):
 
 def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
     """Return true for parent loop to exit, false to continue."""
+    scores = user_prefs.get("game_scores") or {}
+    scores = scores.get(selected_layout) or {}
 
     def mark_selected(txt, flag):
         return (txt, curses.A_BOLD if flag else curses.A_NORMAL)
+
+    def mark_visited(title):
+        visited = scores.get(title, 0)
+        return (title, curses.A_UNDERLINE if title in scores else curses.A_NORMAL)
 
     menu = textmenus.Menu(
         (
@@ -254,7 +260,10 @@ def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
         ],
         (("s", "store prefs + scores"), store_user_prefs_cb),
         (("q", "Quit"), None),
-        layouts[selected_layout]["lessons"],
+        *[
+            (mark_visited(title), text)
+            for title, text in layouts[selected_layout]["lessons"].items()
+        ],
     )
 
     menu.dump_rows(win, titles_y)
