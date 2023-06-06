@@ -244,7 +244,7 @@ def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
         *[
             (
                 layout["key"],
-                mark_selected(f"{title!r} layout", title == selected_layout),
+                mark_selected(title, title == selected_layout),
                 fnt.partial(select_layout_cb, layout=title),
             )
             for title, layout in layouts.items()
