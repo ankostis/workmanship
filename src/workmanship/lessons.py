@@ -20,13 +20,17 @@ from collections import defaultdict
 from pathlib import Path
 from typing import NamedTuple
 
-from ruamel.yaml import YAML
+from ruamel.yaml import YAML, representer
 
 from . import TerminalError, textmenus
 
 ESC_CHAR = chr(27)
 BREAK_CHAR = chr(3)
 RET_CHAR = "↳"  # chr(0x21B3)
+
+representer.RoundTripRepresenter.add_representer(
+    defaultdict, representer.RoundTripRepresenter.represent_dict
+)
 
 # TODO: use `platformdirs` lib to locate user-prefs.
 prefs_fpath = Path("~/.workmanship.yml").expanduser()
@@ -332,17 +336,14 @@ def load_user_prefs(avail_layouts) -> dict:
 def store_user_prefs() -> str:
     global user_nscores
 
-    prefs = user_prefs.copy()
-
-    prefs["beep_on_errors"] = beep_on_errors
-    prefs["selected_layout"] = selected_layout
-    prefs["game_scores"] = dict(prefs["game_scores"])
+    user_prefs["beep_on_errors"] = beep_on_errors
+    user_prefs["selected_layout"] = selected_layout
 
     tmp_fpath = prefs_fpath.with_suffix(".tmp")
 
     yaml = YAML(typ="rt")
     with open(tmp_fpath, "wt") as f:
-        yaml.dump(prefs, f)
+        yaml.dump(user_prefs, f)
 
     try:
         prefs_fpath.rename(prefs_fpath.with_suffix(".bak.yml"))
