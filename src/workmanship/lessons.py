@@ -282,7 +282,7 @@ def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
             status_bar(win, *(statusbar_args or ()))
         else:
             game_stats = run_typing_lesson(win, title, action)
-            update_game_scores(sel, game_stats)
+            update_game_scores(title, game_stats)
             win.erase()
 
 
@@ -309,6 +309,10 @@ def load_lessons(yaml_type="safe") -> dict:
         return yaml.load(f)
 
 
+def _game_scores_factory(*args):
+    return defaultdict(list, *args)
+
+
 def load_user_prefs(avail_layouts) -> dict:
     global user_prefs, beep_on_errors, selected_layout
 
@@ -323,7 +327,18 @@ def load_user_prefs(avail_layouts) -> dict:
         prefs = {}
 
     # TODO: use custocm YAML loader to convert yaml <-> prefs & validators
-    prefs["game_scores"] = defaultdict(list, prefs.get("game_scores") or {})
+    stored_scores = prefs.get("game_scores", {})
+    if not isinstance(stored_scores, dict):
+        raise ValueError(f"Invalid game_scores: {stored_scores!r}")
+
+    prefs["game_scores"] = defaultdict(
+        _game_scores_factory,
+        {
+            layout: _game_scores_factory(lessons)
+            for layout, lessons in stored_scores.items()
+        },
+    )
+
     beep_on_errors = prefs.get("beep_on_errors", False)
     layout = prefs.get("selected_layout")
     if layout in avail_layouts:
@@ -363,11 +378,11 @@ def store_user_prefs_cb(_):
     return (store_user_prefs(), curses.A_ITALIC)
 
 
-def update_game_scores(sel, stats: Stats | None):
+def update_game_scores(lesson, stats: Stats | None):
     global user_nscores
 
     if stats:
-        user_prefs["game_scores"][sel].append(
+        user_prefs["game_scores"][selected_layout][lesson].append(
             {"date": datetime.datetime.now(), **stats._asdict()}
         )
         user_nscores += 1
