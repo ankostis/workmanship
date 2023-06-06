@@ -12,7 +12,6 @@ converted hastily from dvorak (so gibberish grams & words).
 """
 import curses
 import datetime
-import functools as fnt
 import importlib.resources as pkg_resources
 import sys
 import time
@@ -223,7 +222,7 @@ def toggle_beep_on_errors_cb(_):
     )
 
 
-def select_layout_cb(_, layout):
+def select_layout_cb(layout):
     global selected_layout
 
     old_layout = selected_layout
@@ -249,7 +248,7 @@ def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
             (
                 layout["key"],
                 mark_selected(title, title == selected_layout),
-                fnt.partial(select_layout_cb, layout=title),
+                select_layout_cb,
             )
             for title, layout in layouts.items()
         ],
@@ -277,7 +276,7 @@ def lessons_menu(win, layouts, *, prompt_y=0, titles_y=2) -> bool:
     if sel not in menu:
         status_bar(win, f"Invalid selection: {sel}", curses.A_BOLD)
     else:
-        title, action = menu[sel]
+        (title, _fmt), action = menu[sel]
         if callable(action):
             statusbar_args = action(title)
             status_bar(win, *(statusbar_args or ()))
