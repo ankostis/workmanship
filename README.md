@@ -57,4 +57,6 @@ given the plethora of online typing tutors and games:
   a database of layouts ans their statistics.
 - [Dreymar's Big Bag of Tricks](https://dreymar.colemak.org/ergo-mods.html#curl-dh):
   an insighgful collection of mods & software for *colemak* & *colemak-DH*.    
+- [Colemak's Mods](https://colemakmods.github.io/mod-dh/)
+  & [Ergonomic Mods](http://colemakmods.github.io/ergonomic-mods/)
 - ...too many to count (but very few for *workman* layout).
